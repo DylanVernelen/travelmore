@@ -70,7 +70,7 @@ CREATE TABLE locatie (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE reis
-  ADD KEY transportmiddelId (transportmiddelIdgit),
+  ADD KEY transportmiddelId (transportmiddelId),
   ADD KEY vertrekId (vertrekId),
   ADD KEY bestemmingId (bestemmingId);
 
