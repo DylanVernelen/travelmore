@@ -3,17 +3,10 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+01:00";
 
+DROP DATABASEgit IF EXISTS travelmore;
 CREATE DATABASE IF NOT EXISTS travelmore;
 
 USE travelmore;
-/*DROP TABLE gebruiker;
-DROP TABLE rol;
-DROP TABLE reis;
-DROP TABLE boeking;
-DROP TABLE betaling;
-DROP TABLE transportmiddel;
-DROP TABLE locatie;
-DROP TABLE betalingstype;*/
 
 CREATE TABLE gebruiker (
   id int(11) NOT NULL AUTO_INCREMENT,
