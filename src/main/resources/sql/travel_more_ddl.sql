@@ -3,7 +3,7 @@ SET AUTOCOMMIT = 0;
 START TRANSACTION;
 SET time_zone = "+01:00";
 
-DROP DATABASEgit IF EXISTS travelmore;
+DROP DATABASE IF EXISTS travelmore;
 CREATE DATABASE IF NOT EXISTS travelmore;
 
 USE travelmore;
