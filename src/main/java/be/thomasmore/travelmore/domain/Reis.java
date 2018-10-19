@@ -4,9 +4,18 @@ import javax.persistence.*;
 import java.util.Date;
 
 @Entity
-@Table(name = "betaling")
-
+@Table(name = "reis")
+@NamedQueries(
+        {
+                @NamedQuery(
+                        name = Reis.FIND_ALL,
+                        query = "SELECT r FROM Reis r"
+                )
+        }
+)
 public class Reis {
+    public static final String FIND_ALL = "Reis.findAll";
+
     @Id
     private int id;
 
