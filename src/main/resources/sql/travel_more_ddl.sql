@@ -88,7 +88,6 @@ CREATE TABLE boeking (
 
 CREATE TABLE betaling (
   id  int(11) NOT NULL AUTO_INCREMENT,
-  boekingId int(11) NOT NULL,
   datum DATETIME NOT NULL,
   betalingstypeId int(11) NOT NULL,
   PRIMARY KEY (id),
@@ -116,7 +115,6 @@ CREATE TABLE betalingstype (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE betaling
-  ADD KEY boekingId (boekingId),
   ADD KEY betalingstypeId (betalingstypeId);
 
 ALTER TABLE betaling
