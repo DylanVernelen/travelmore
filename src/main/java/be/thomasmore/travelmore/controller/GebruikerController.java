@@ -9,7 +9,7 @@ import javax.inject.Inject;
 @ManagedBean
 @ViewScoped
 public class GebruikerController {
-    private Gebruiker nieuweGebruiker = new Gebruiker;
+    private Gebruiker nieuweGebruiker = new Gebruiker();
 
     @Inject
     GebruikerService gebruikerService;
