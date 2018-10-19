@@ -14,8 +14,8 @@ public class Betaling {
     @OneToOne
     private Boeking boeking;
 
-    //@Column(name = "betalingstype")
-    //private Betalingstype betalingstype;
+    @OneToOne
+    private BetalingsType betalingsType;
     private Date datum;
 
     public int getId() {
@@ -34,14 +34,14 @@ public class Betaling {
         this.boeking = boeking;
     }
 
-  /*  public Betalingstype getBetalingstype() {
-        return betalingstype;
+    public BetalingsType getBetalingstype() {
+        return betalingsType;
     }
 
-    public void setBetalingstype(Betalingstype betalingstype) {
-        this.betalingstype = betalingstype;
+    public void setBetalingstype(BetalingsType betalingstype) {
+        this.betalingsType = betalingstype;
     }
-*/
+
     public Date getDatum() {
         return datum;
     }
