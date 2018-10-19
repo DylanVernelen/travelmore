@@ -20,8 +20,8 @@ public class Transportmiddel {
 
     @Id
     private int id;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "naam")
+    private String naam;
 
     public int getId() {
         return id;
@@ -31,11 +31,11 @@ public class Transportmiddel {
         this.id = id;
     }
 
-    public String getName() {
-        return name;
+    public String getNaam() {
+        return naam;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setNaam(String naam) {
+        this.naam = naam;
     }
 }

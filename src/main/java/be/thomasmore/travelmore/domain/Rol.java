@@ -10,24 +10,23 @@ import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "locatie")
+@Table(name = "rol")
 @NamedQueries(
         {
                 @NamedQuery(
                         name = Locatie.FIND_ALL,
-                        query = "SELECT l FROM Locatie l"
+                        query = "SELECT l FROM Rol l"
                 ),
 
         }
 )
-public class Locatie {
+public class Rol {
     public static final String FIND_ALL = "Locatie.findAll";
 
     @Id
     private int id;
     @Column(name = "naam")
     private String naam;
-    //@Size(min=3, max = 5)
 
     public int getId() {
         return id;
