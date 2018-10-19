@@ -77,7 +77,7 @@ ALTER TABLE reis
 
 CREATE TABLE boeking (
   id  int(11) NOT NULL AUTO_INCREMENT,
-  gebruikersId int(11) NOT NULL,
+  gebruikerId int(11) NOT NULL,
   reisId int(11) NOT NULL,
   aantalPersonen int(11) NOT NULL,
   opmerking varchar(255) DEFAULT NULL,
@@ -95,13 +95,13 @@ CREATE TABLE betaling (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE boeking
-  ADD KEY gebruikersId (gebruikersId),
+  ADD KEY gebruikerId (gebruikerId),
   ADD KEY reisId (reisId),
   ADD KEY betalingId (betalingId);
 
 ALTER TABLE boeking
   ADD CONSTRAINT boeking_ibfk_1 FOREIGN KEY
-  (gebruikersId) REFERENCES gebruiker (id),
+  (gebruikerId) REFERENCES gebruiker (id),
   ADD CONSTRAINT boeking_ibfk_2 FOREIGN KEY
   (reisId) REFERENCES reis (id),
   ADD CONSTRAINT boeking_ibfk_3 FOREIGN KEY
@@ -118,8 +118,6 @@ ALTER TABLE betaling
   ADD KEY betalingstypeId (betalingstypeId);
 
 ALTER TABLE betaling
-  ADD CONSTRAINT betaling_ibfk_1 FOREIGN KEY
-  (boekingId) REFERENCES boeking (id),
   ADD CONSTRAINT betaling_ibfk_2 FOREIGN KEY
   (betalingstypeId) REFERENCES betalingstype (id);
 
