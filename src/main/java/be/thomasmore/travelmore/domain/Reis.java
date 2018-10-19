@@ -9,13 +9,13 @@ import java.util.Date;
 public class Reis {
     @Id
     private int id;
-    @ManyToOne
+
     @Column(name = "vertrek")
     private Locatie vertrek;
-    @ManyToOne
+
     @Column(name = "bestemming")
     private Locatie bestemming;
-    @ManyToOne
+
     @Column(name = "transportmiddel")
     private Transportmiddel transportmiddel;
     private String naam;

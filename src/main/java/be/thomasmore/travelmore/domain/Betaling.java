@@ -10,10 +10,10 @@ public class Betaling {
 
     @Id
     private int id;
-    @OneToOne
+
     @Column(name = "boeking")
     private Boeking boeking;
-    @ManyToOne
+
     //@Column(name = "betalingstype")
     //private Betalingstype betalingstype;
    // @Column(name = "datum")

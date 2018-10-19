@@ -14,14 +14,14 @@ import javax.validation.constraints.Size;
 @NamedQueries(
         {
                 @NamedQuery(
-                        name = Locatie.FIND_ALL,
+                        name = Rol.FIND_ALL,
                         query = "SELECT l FROM Rol l"
                 ),
 
         }
 )
 public class Rol {
-    public static final String FIND_ALL = "Locatie.findAll";
+    public static final String FIND_ALL = "Rol.findAll";
 
     @Id
     private int id;

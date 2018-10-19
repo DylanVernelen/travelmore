@@ -1,6 +1,8 @@
 package be.thomasmore.travelmore.domain;
 
 import javax.persistence.*;
+import be.thomasmore.travelmore.domain.Gebruiker;
+import be.thomasmore.travelmore.domain.Betaling;
 
 @Entity
 @Table(name="boeking")
@@ -9,18 +11,15 @@ public class Boeking {
 
     @Id
     private int id;
-    @OneToMany
-    @Column(name = "gebruiker")
+    @ManyToOne
     private Gebruiker gebruiker;
-    @ManyToMany
-    @Column(name = "reis")
+    @ManyToOne
     private Reis reis;
     @Column(name = "aantalPersonen")
     private int aantalPersonen;
     @Column(name = "opmerking")
     private String opmerking;
     @OneToOne
-    @Column(name = "betaling")
     private Betaling betaling;
 
     public int getId() {

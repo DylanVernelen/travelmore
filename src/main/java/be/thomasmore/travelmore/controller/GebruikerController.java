@@ -2,6 +2,7 @@ package be.thomasmore.travelmore.controller;
 
 import be.thomasmore.travelmore.domain.Gebruiker;
 import be.thomasmore.travelmore.service.GebruikerService;
+import be.thomasmore.travelmore.domain.Gebruiker;
 
 import javax.annotation.ManagedBean;
 import javax.faces.bean.ViewScoped;

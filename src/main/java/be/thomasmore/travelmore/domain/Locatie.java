@@ -16,8 +16,7 @@ import javax.validation.constraints.Size;
                 @NamedQuery(
                         name = Locatie.FIND_ALL,
                         query = "SELECT l FROM Locatie l"
-                ),
-
+                )
         }
 )
 public class Locatie {
