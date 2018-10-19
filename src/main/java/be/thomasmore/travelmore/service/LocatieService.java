@@ -22,7 +22,7 @@ public class LocatieService {
 
     public void updateName(int id, String newName) {
         Locatie locatie = locatieRepository.findById(id);
-        locatie.setName(newName);
+        locatie.setNaam(newName);
     }
 
     public void insert(Locatie locatie) {
