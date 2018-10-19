@@ -10,18 +10,23 @@ public class Reis {
     @Id
     private int id;
 
-    @Column(name = "vertrek")
+    @ManyToOne
     private Locatie vertrek;
 
-    @Column(name = "bestemming")
+    @ManyToOne
     private Locatie bestemming;
 
-    @Column(name = "transportmiddel")
+    @ManyToOne
     private Transportmiddel transportmiddel;
+    @Column(name = "naam")
     private String naam;
+    @Column(name = "aantalPlaatsen")
     private int aantalPlaatsen;
+    @Column(name = "kostprijs")
     private double kostprijs;
+    @Column(name = "startdatum")
     private Date startdatum;
+    @Column(name = "einddatum")
     private Date einddatum;
 
     public int getId() {

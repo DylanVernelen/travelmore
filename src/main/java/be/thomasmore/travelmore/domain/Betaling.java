@@ -11,12 +11,11 @@ public class Betaling {
     @Id
     private int id;
 
-    @Column(name = "boeking")
+    @OneToOne
     private Boeking boeking;
 
     //@Column(name = "betalingstype")
     //private Betalingstype betalingstype;
-   // @Column(name = "datum")
     private Date datum;
 
     public int getId() {

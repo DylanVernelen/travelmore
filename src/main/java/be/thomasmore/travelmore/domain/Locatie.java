@@ -7,7 +7,6 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
-import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "locatie")
@@ -26,7 +25,6 @@ public class Locatie {
     private int id;
     @Column(name = "naam")
     private String naam;
-    //@Size(min=3, max = 5)
 
     public int getId() {
         return id;
