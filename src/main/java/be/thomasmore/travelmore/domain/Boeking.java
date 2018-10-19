@@ -1,9 +1,6 @@
 package be.thomasmore.travelmore.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name="boeking")
@@ -12,16 +9,19 @@ public class Boeking {
 
     @Id
     private int id;
-    @Column(name = "gebruikersId")
-    private int gebruikersId;
-    @Column(name = "reisId")
-    private int reisId;
+    @OneToMany
+    @Column(name = "gebruiker")
+    private Gebruiker gebruiker;
+    @ManyToMany
+    @Column(name = "reis")
+    private Reis reis;
     @Column(name = "aantalPersonen")
     private int aantalPersonen;
     @Column(name = "opmerking")
     private String opmerking;
-    @Column(name = "betalingId")
-    private int betalingId;
+    @OneToOne
+    @Column(name = "betaling")
+    private Betaling betaling;
 
     public int getId() {
         return id;
@@ -31,20 +31,20 @@ public class Boeking {
         this.id = id;
     }
 
-    public int getGebruikersId() {
-        return gebruikersId;
+    public Gebruiker getGebruiker() {
+        return gebruiker;
     }
 
-    public void setGebruikersId(int gebruikersId) {
-        this.gebruikersId = gebruikersId;
+    public void setGebruiker(Gebruiker gebruiker) {
+        this.gebruiker = gebruiker;
     }
 
-    public int getReisId() {
-        return reisId;
+    public Reis getReis() {
+        return reis;
     }
 
-    public void setReisId(int reisId) {
-        this.reisId = reisId;
+    public void setReis(Reis reis) {
+        this.reis = reis;
     }
 
     public int getAantalPersonen() {
@@ -63,11 +63,11 @@ public class Boeking {
         this.opmerking = opmerking;
     }
 
-    public int getBetalingId() {
-        return betalingId;
+    public Betaling getBetaling() {
+        return betaling;
     }
 
-    public void setBetalingId(int betalingId) {
-        this.betalingId = betalingId;
+    public void setBetaling(Betaling betaling) {
+        this.betaling = betaling;
     }
 }
