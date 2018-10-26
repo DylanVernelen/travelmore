@@ -23,8 +23,9 @@
         </header>
         <main>
             <div class="container">
+                <h3>Locaties - Lijst</h3>
                 <p:dataTable var="locatie" value="#{locatieController.locations}" id="locatieDataTable">
-                    <p:column headerText="naam">
+                    <p:column headerText="Naam">
                         <h:outputText value="#{locatie.naam}"/>
                     </p:column>
                 </p:dataTable>
