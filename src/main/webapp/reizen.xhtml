@@ -22,6 +22,22 @@
             </div>
         </header>
         <main>
+
+            <ui:repeat value="#{reisController.all}" var="reis">
+
+                <div> <!-- Card -->
+                    <p:graphicImage width="340px" height="191px" value="resources/img/#{reis.afbeelding}"/>
+                    <h:outputText value="#{reis.naam}"/>
+                    <h:outputText value="Plaatsen: x/#{reis.aantalPlaatsen} beschikbaar" />
+                    <h:outputText value="Start: #{reis.startdatumPretty}" />
+                    <h:outputText value="Eind: #{reis.einddatumPretty}" />
+                    <h:outputText value="Vertrek: #{reis.vertrek.naam}"/>
+                    <h:outputText value="Aankomst: #{reis.bestemming.naam}"/>
+                </div>
+
+
+            </ui:repeat>
+            <!--
             <p:dataGrid var="reis" value="#{reisController.all}" columns="3" layout="grid"
                         rows="12" paginator="true" id="reis"
                         paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
@@ -41,12 +57,11 @@
                         <h:outputText value="Eind: #{reis.einddatumPretty}" />
                         <h:outputText value="Vertrek: #{reis.vertrek.naam}"/>
                         <h:outputText value="Aankomst: #{reis.bestemming.naam}"/>
-                        <h:outputText value="Aankomst: #{reis.afbeelding}"/>
 
                     </h:panelGrid>
                 </p:panel>
 
-            </p:dataGrid>
+            </p:dataGrid>-->
         </main>
     </ui:define>
 </ui:composition>
