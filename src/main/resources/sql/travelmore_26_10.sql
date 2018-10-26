@@ -27,12 +27,6 @@ CREATE TABLE IF NOT EXISTS `betaling` (
   CONSTRAINT `betaling_ibfk_2` FOREIGN KEY (`betalingstypeId`) REFERENCES `betalingstype` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumpen data van tabel travelmore.betaling: ~0 rows (ongeveer)
-DELETE FROM `betaling`;
-/*!40000 ALTER TABLE `betaling` DISABLE KEYS */;
-/*!40000 ALTER TABLE `betaling` ENABLE KEYS */;
-
-
 -- Structuur van  tabel travelmore.betalingstype wordt geschreven
 CREATE TABLE IF NOT EXISTS `betalingstype` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
@@ -40,11 +34,6 @@ CREATE TABLE IF NOT EXISTS `betalingstype` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Dumpen data van tabel travelmore.betalingstype: ~0 rows (ongeveer)
-DELETE FROM `betalingstype`;
-/*!40000 ALTER TABLE `betalingstype` DISABLE KEYS */;
-/*!40000 ALTER TABLE `betalingstype` ENABLE KEYS */;
 
 
 -- Structuur van  tabel travelmore.boeking wordt geschreven
@@ -65,10 +54,6 @@ CREATE TABLE IF NOT EXISTS `boeking` (
   CONSTRAINT `boeking_ibfk_3` FOREIGN KEY (`betaling_id`) REFERENCES `betaling` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumpen data van tabel travelmore.boeking: ~0 rows (ongeveer)
-DELETE FROM `boeking`;
-/*!40000 ALTER TABLE `boeking` DISABLE KEYS */;
-/*!40000 ALTER TABLE `boeking` ENABLE KEYS */;
 
 
 -- Structuur van  tabel travelmore.gebruiker wordt geschreven
@@ -86,10 +71,6 @@ CREATE TABLE IF NOT EXISTS `gebruiker` (
   CONSTRAINT `gebruiker_ibfk_1` FOREIGN KEY (`rolId`) REFERENCES `rol` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumpen data van tabel travelmore.gebruiker: ~0 rows (ongeveer)
-DELETE FROM `gebruiker`;
-/*!40000 ALTER TABLE `gebruiker` DISABLE KEYS */;
-/*!40000 ALTER TABLE `gebruiker` ENABLE KEYS */;
 
 
 -- Structuur van  tabel travelmore.locatie wordt geschreven
@@ -101,8 +82,6 @@ CREATE TABLE IF NOT EXISTS `locatie` (
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
 -- Dumpen data van tabel travelmore.locatie: ~4 rows (ongeveer)
-DELETE FROM `locatie`;
-/*!40000 ALTER TABLE `locatie` DISABLE KEYS */;
 INSERT INTO `locatie` (`id`, `naam`) VALUES
 	(1, 'Geel'),
 	(2, 'Parijs'),
@@ -134,8 +113,6 @@ CREATE TABLE IF NOT EXISTS `reis` (
 ) ENGINE=InnoDB AUTO_INCREMENT=24 DEFAULT CHARSET=utf8;
 
 -- Dumpen data van tabel travelmore.reis: ~3 rows (ongeveer)
-DELETE FROM `reis`;
-/*!40000 ALTER TABLE `reis` DISABLE KEYS */;
 INSERT INTO `reis` (`id`, `naam`, `afbeelding`, `vertrek_id`, `bestemming_id`, `aantalPlaatsen`, `kostprijs`, `startdatum`, `einddatum`, `transportmiddel_id`) VALUES
 	(2, 'Reis naar Parijs', '', 2, 2, 10, 249, '2018-01-01 00:00:00', '2018-01-07 00:00:00', 1),
 	(3, 'Driedaagse naar Berlijn', '', 3, 4, 25, 399, '2018-01-08 00:00:00', '2018-01-11 00:00:00', 2),
@@ -151,10 +128,6 @@ CREATE TABLE IF NOT EXISTS `rol` (
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
--- Dumpen data van tabel travelmore.rol: ~0 rows (ongeveer)
-DELETE FROM `rol`;
-/*!40000 ALTER TABLE `rol` DISABLE KEYS */;
-/*!40000 ALTER TABLE `rol` ENABLE KEYS */;
 
 
 -- Structuur van  tabel travelmore.transportmiddel wordt geschreven
@@ -165,9 +138,7 @@ CREATE TABLE IF NOT EXISTS `transportmiddel` (
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8;
 
--- Dumpen data van tabel travelmore.transportmiddel: ~3 rows (ongeveer)
-DELETE FROM `transportmiddel`;
-/*!40000 ALTER TABLE `transportmiddel` DISABLE KEYS */;
+
 INSERT INTO `transportmiddel` (`id`, `naam`) VALUES
 	(1, 'Auto'),
 	(2, 'Vliegtuig'),
