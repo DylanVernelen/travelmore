@@ -17,3 +17,10 @@ header, main, footer {
         padding-left: 0;
     }
 }
+
+
+/* Verwijderen van borders bij p:tags */
+.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td, .ui-datatable tfoot th
+{
+    border:0;
+}
