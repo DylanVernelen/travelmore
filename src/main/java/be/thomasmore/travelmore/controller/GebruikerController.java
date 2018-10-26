@@ -23,4 +23,6 @@ public class GebruikerController {
     public void setNieuweGebruiker(Gebruiker nieuweGebruiker) {
         this.nieuweGebruiker = nieuweGebruiker;
     }
+
+
 }
