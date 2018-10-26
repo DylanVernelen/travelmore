@@ -22,46 +22,57 @@
             </div>
         </header>
         <main>
+            <div class="container">
+                <div class="row">
+                <ui:repeat value="#{reisController.all}" var="reis">
 
-            <ui:repeat value="#{reisController.all}" var="reis">
 
-                <div> <!-- Card -->
-                    <p:graphicImage width="340px" height="191px" value="resources/img/#{reis.afbeelding}"/>
-                    <h:outputText value="#{reis.naam}"/>
-                    <h:outputText value="Plaatsen: x/#{reis.aantalPlaatsen} beschikbaar" />
-                    <h:outputText value="Start: #{reis.startdatumPretty}" />
-                    <h:outputText value="Eind: #{reis.einddatumPretty}" />
-                    <h:outputText value="Vertrek: #{reis.vertrek.naam}"/>
-                    <h:outputText value="Aankomst: #{reis.bestemming.naam}"/>
+                        <div class="col s12 m4">
+                            <div class="card">
+                                <div class="card-image">
+                                    <p:graphicImage value="resources/img/#{reis.afbeelding}"/>
+                                    <span class="card-title"><h:outputText value="#{reis.naam}"/></span>
+                                </div>
+                                <div class="card-content">
+                                    <table>
+                                        <tbody>
+                                        <tr>
+                                            <td><h:outputText value="Plaatsen: x/#{reis.aantalPlaatsen} beschikbaar"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:outputText value="Start: #{reis.startdatumPretty}"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:outputText value="Eind: #{reis.einddatumPretty}"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:outputText value="Vertrek: #{reis.vertrek.naam}"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:outputText value="Aankomst: #{reis.bestemming.naam}"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:outputText value="Transportmiddel: #{reis.transportmiddel.naam}"/>
+                                            </td>
+                                        </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <div class="card-action">
+                                        <a href="#">Reis boeken</a>
+                                </div>
+                            </div>
+                        </div>
+
+
+
+
+
+
+                </ui:repeat>
                 </div>
-
-
-            </ui:repeat>
-            <!--
-            <p:dataGrid var="reis" value="#{reisController.all}" columns="3" layout="grid"
-                        rows="12" paginator="true" id="reis"
-                        paginatorTemplate="{CurrentPageReport}  {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
-                        rowsPerPageTemplate="6,12,16">
-
-                <f:facet name="header">
-                    Reizen
-                </f:facet>
-
-                <p:panel header="#{reis.naam}" style="text-align:center">
-                    <h:panelGrid columns="1" style="width:100%">
-                        <p:graphicImage width="340px" height="191px" value="resources/img/#{reis.afbeelding}"/>
-
-
-                        <h:outputText value="Plaatsen: x/#{reis.aantalPlaatsen} beschikbaar" />
-                        <h:outputText value="Start: #{reis.startdatumPretty}" />
-                        <h:outputText value="Eind: #{reis.einddatumPretty}" />
-                        <h:outputText value="Vertrek: #{reis.vertrek.naam}"/>
-                        <h:outputText value="Aankomst: #{reis.bestemming.naam}"/>
-
-                    </h:panelGrid>
-                </p:panel>
-
-            </p:dataGrid>-->
+            </div>
         </main>
     </ui:define>
 </ui:composition>
