@@ -33,14 +33,16 @@
 
                 <p:panel header="#{reis.naam}" style="text-align:center">
                     <h:panelGrid columns="1" style="width:100%">
-                        <p:graphicImage width="340px" value="resources/img/parijs.jpg"/>
+                        <p:graphicImage width="340px" height="191px" value="resources/img/#{reis.afbeelding}"/>
 
 
                         <h:outputText value="Plaatsen: x/#{reis.aantalPlaatsen} beschikbaar" />
-                        <h:outputText value="Start: #{reis.startdatum}" />
-                        <h:outputText value="Eind: #{reis.einddatum}" />
+                        <h:outputText value="Start: #{reis.startdatumPretty}" />
+                        <h:outputText value="Eind: #{reis.einddatumPretty}" />
                         <h:outputText value="Vertrek: #{reis.vertrek.naam}"/>
                         <h:outputText value="Aankomst: #{reis.bestemming.naam}"/>
+                        <h:outputText value="Aankomst: #{reis.afbeelding}"/>
+
                     </h:panelGrid>
                 </p:panel>
 
