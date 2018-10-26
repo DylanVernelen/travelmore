@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<f:view>
+
+
+    <h:form class="form">
+        <h2><h:outputText value="Registreer"/></h2>
+        <h:panelGrid columns="5">
+
+            <div class="input-field col s6">
+                <h:inputText id="Naam" class="validate">  value="#{gebruikerController.nieuweGebruiker.naam}">
+                </h:inputText>
+                <label for="Naam">Naam</label>
+            </div>
+
+
+            <h:inputText   value="#{gebruikerController.nieuweGebruiker.naam}">
+        </h:inputText>
+
+            <h:inputText   value="#{gebruikerController.nieuweGebruiker.adres}">
+            </h:inputText>
+
+            <h:inputText   value="#{gebruikerController.nieuweGebruiker.woonplaats}">
+            </h:inputText>
+            <h:inputText   value="#{gebruikerController.nieuweGebruiker.email}">
+            </h:inputText>
+            <h:inputText   value="#{gebruikerController.nieuweGebruiker.wachtwoord}">
+            </h:inputText>
+
+            <h:commandLink class=""  value="registreer" action="#{gebruikerController.registreer }">
+            </h:commandLink>
+
+
+        </h:panelGrid>
+    </h:form>
+
+
+</f:view>
+</html>
