@@ -5,40 +5,72 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
       xmlns:f="http://xmlns.jcp.org/jsf/core">
-<f:view>
-
-
-    <h:form class="form">
-        <h2><h:outputText value="Registreer"/></h2>
-        <h:panelGrid columns="5">
-
-            <div class="input-field col s6">
-                <h:inputText id="Naam" class="validate">  value="#{gebruikerController.nieuweGebruiker.naam}">
-                </h:inputText>
-                <label for="Naam">Naam</label>
+<ui:composition template="/templates/template.xhtml">
+<ui:define name="content">
+<header>
+    <div class="container">
+        <div class="row">
+            <div class="col s12">
+                <h1 class="header">
+                    <span class="blue-text">TRA</span><span class="orange-text">VEL</span><span class="red-text">MORE</span>
+                </h1>
+                <div class="divider"></div>
             </div>
-
-
+        </div>
+    </div>
+</header>
+<main>
+<f:view>
+    <div class="row">
+    <h:form class="form col s12">
+        <div class="row">
+        <h2><h:outputText value="Registreer"/></h2>
+        <h:panelGrid columns="6">
+            <div class="input-field col s12">
+                <h:inputText  id="Naam" class="validate">  value="#{gebruikerController.nieuweGebruiker.naam}">
+                </h:inputText>
+            </div>
+            <div class="row">
+            <div class="input-field col s12">
             <h:inputText   value="#{gebruikerController.nieuweGebruiker.naam}">
-        </h:inputText>
-
+            </h:inputText>
+            </div>
+            </div>
+            <div class="row">
+            <div class="input-field col s12">
             <h:inputText   value="#{gebruikerController.nieuweGebruiker.adres}">
             </h:inputText>
-
+            </div>
+            </div>
+            <div class="row">
+            <div class="input-field col s12">
             <h:inputText   value="#{gebruikerController.nieuweGebruiker.woonplaats}">
             </h:inputText>
+            </div>
+            </div>
+            <div class="row">
+            <div class="input-field col s12">
             <h:inputText   value="#{gebruikerController.nieuweGebruiker.email}">
             </h:inputText>
+            </div>
+            </div>
+            <div class="row">
+            <div class="input-field ">
             <h:inputText   value="#{gebruikerController.nieuweGebruiker.wachtwoord}">
             </h:inputText>
-
-            <h:commandLink class=""  value="registreer" action="#{gebruikerController.registreer }">
+            </div>
+            </div>
+            <div class="row">
+            <h:commandLink class="waves-effect waves-light btn"  value="registreer" action="#{gebruikerController.registreer}">
             </h:commandLink>
-
-
+            </div>
         </h:panelGrid>
+        </div>
     </h:form>
-
-
+    </div>
 </f:view>
+</main>
+</ui:define>
+</ui:composition>
 </html>
+
