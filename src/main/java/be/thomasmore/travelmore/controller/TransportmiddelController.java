@@ -16,7 +16,7 @@ public class TransportmiddelController {
     private TransportmiddelService transportmiddelService;
 
 
-    public List<Transportmiddel> getLocations(){
+    public List<Transportmiddel> getTransportmiddelen(){
         return this.transportmiddelService.findAll();
     }
 

@@ -118,9 +118,11 @@ public class Reis {
 
     public String getAfbeelding() {
         if  (this.afbeelding == null || this.afbeelding.isEmpty()){
-            System.out.println("REEEEEEEEEEEEE");
-            return "unavailable.png";
+            System.out.println("Image not found");
+            this.setAfbeelding("unavailable.png");
+            return afbeelding;
         } else{
+            System.out.println("Image found: " + afbeelding);
             return afbeelding;
         }
     }

@@ -28,4 +28,11 @@ public class ReisController {
     public void setNieuweReis(Reis nieuweReis) {
         this.nieuweReis = nieuweReis;
     }
+
+    public void createReis(){
+        System.out.println("Click");
+        System.out.println(nieuweReis.getNaam());
+        this.reisService.insert(nieuweReis);
+    }
+
 }

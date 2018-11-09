@@ -86,7 +86,9 @@ INSERT INTO `locatie` (`id`, `naam`) VALUES
 	(1, 'Geel'),
 	(2, 'Parijs'),
 	(3, 'Brussel'),
-	(4, 'Berlijn');
+	(4, 'Berlijn'),
+	(5, 'Brugge'),
+	(6, 'Antwerpen');
 /*!40000 ALTER TABLE `locatie` ENABLE KEYS */;
 
 
@@ -94,7 +96,7 @@ INSERT INTO `locatie` (`id`, `naam`) VALUES
 CREATE TABLE IF NOT EXISTS `reis` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `naam` varchar(255) NOT NULL,
-  `afbeelding` varchar(255) NOT NULL,
+  `afbeelding` varchar(255),
   `vertrek_id` int(11) NOT NULL,
   `bestemming_id` int(11) NOT NULL,
   `aantalPlaatsen` int(11) NOT NULL,
@@ -117,6 +119,7 @@ INSERT INTO `reis` (`id`, `naam`, `afbeelding`, `vertrek_id`, `bestemming_id`, `
 	(2, 'Reis naar Parijs', 'parijs.jpg', 2, 2, 10, 249, '2018-01-01 00:00:00', '2018-01-07 00:00:00', 1),
 	(3, 'Driedaagse naar Berlijn', 'berlijn.jpg', 3, 4, 25, 399, '2018-01-08 00:00:00', '2018-01-11 00:00:00', 2),
 	(4, 'Reis naar Geel', 'geel.jpg', 1, 1, 5, 150, '2018-01-23 00:00:00', '2018-01-25 00:00:00', 3);
+	(5, 'Fietstocht naar Brugge', NULL , 6, 5, 36, 254, '2018-11-05 00:00:00', '2018-11-06 00:00:00', 4);
 /*!40000 ALTER TABLE `reis` ENABLE KEYS */;
 
 
@@ -142,7 +145,8 @@ CREATE TABLE IF NOT EXISTS `transportmiddel` (
 INSERT INTO `transportmiddel` (`id`, `naam`) VALUES
 	(1, 'Auto'),
 	(2, 'Vliegtuig'),
-	(3, 'Bus');
+	(3, 'Bus'),
+	(4, 'Fiets');
 /*!40000 ALTER TABLE `transportmiddel` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

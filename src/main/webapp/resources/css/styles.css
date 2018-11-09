@@ -31,4 +31,8 @@ header, main, footer {
     margin-right: 5%;
 }
 
+select {
+    display: inline-block;
+}
+
 

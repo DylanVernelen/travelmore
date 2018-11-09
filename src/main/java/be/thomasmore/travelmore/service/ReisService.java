@@ -15,4 +15,6 @@ public class ReisService {
     public List<Reis> findAll() {
         return reisRepository.findAll();
     }
+
+    public void insert(Reis reis) { reisRepository.insert(reis);}
 }

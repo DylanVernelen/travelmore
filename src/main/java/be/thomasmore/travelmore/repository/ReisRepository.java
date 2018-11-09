@@ -14,4 +14,6 @@ public class ReisRepository {
     public List<Reis> findAll() {
         return entityManager.createNamedQuery(Reis.FIND_ALL, Reis.class).getResultList();
     }
+
+    public void insert(Reis reis) {entityManager.persist(reis);}
 }
