@@ -116,7 +116,14 @@ public class Reis {
         this.einddatum = einddatum;
     }
 
-    public String getAfbeelding() { return afbeelding; }
+    public String getAfbeelding() {
+        if  (this.afbeelding == null || this.afbeelding.isEmpty()){
+            System.out.println("REEEEEEEEEEEEE");
+            return "unavailable.png";
+        } else{
+            return afbeelding;
+        }
+    }
 
     public void setAfbeelding(String afbeelding) { this.afbeelding = afbeelding; }
 
