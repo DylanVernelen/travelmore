@@ -19,7 +19,10 @@ public class LocatieService {
         return locatieRepository.findAll();
     }
 
-
+    public Locatie findById(int id)
+    {
+        return locatieRepository.findById(id);
+    }
     public void updateName(int id, String newName) {
         Locatie locatie = locatieRepository.findById(id);
         locatie.setNaam(newName);

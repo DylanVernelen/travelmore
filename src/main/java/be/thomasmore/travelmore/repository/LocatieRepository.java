@@ -20,6 +20,7 @@ public class LocatieRepository {
 
 
 
+
     public void insert(Locatie locatie) {
         entityManager.persist(locatie);
     }

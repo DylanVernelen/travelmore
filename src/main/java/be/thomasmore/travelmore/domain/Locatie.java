@@ -7,6 +7,7 @@ import javax.persistence.Id;
 import javax.persistence.NamedQueries;
 import javax.persistence.NamedQuery;
 import javax.persistence.Table;
+import javax.xml.bind.annotation.XmlRootElement;
 
 @Entity
 @Table(name = "locatie")
@@ -18,6 +19,7 @@ import javax.persistence.Table;
                 )
         }
 )
+@XmlRootElement(name = "locatie")
 public class Locatie {
     public static final String FIND_ALL = "Locatie.findAll";
 

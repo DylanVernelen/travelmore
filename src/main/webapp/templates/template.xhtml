@@ -23,22 +23,48 @@
         <nav class="blue lighten-1">
             <div class="nav-wrapper container"><h:outputLink value="index.xhtml" styleClass="brand-logo center">Travelmore</h:outputLink>
                 <a href="#" data-target="slide-out" class="sidenav-trigger show-on-large"><i class="material-icons white-text">menu</i></a>
+                <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
             </div>
         </nav>
     </div>
     </h:form>
 
     <ul id="slide-out" class="sidenav sidenav-fixed">
-        <li><a href="#!"><i class="material-icons">cloud</i>First Link With Icon</a></li>
+        <li><h5 class="center-align"><span class="blue-text">TRA</span><span class="orange-text">VEL</span><span class="red-text">MORE</span></h5></li>
+        <li><h:outputLink value="index.xhtml"><i class="material-icons">home</i>Home</h:outputLink></li>
         <li><a href="#!">Second Link</a></li>
         <li><div class="divider"></div></li>
-        <li><a class="subheader">Subheader</a></li>
+        <li><a class="subheader">Admin Menu</a></li>
         <li><a class="waves-effect" href="#!">Third Link With Waves</a></li>
     </ul>
 
     <ui:insert name="content">
 
     </ui:insert>
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+            <h4>Modal Header</h4>
+            <p>A bunch of text</p>
+            <h:form>
+                <h3>JSF Login Logout</h3>
+                <h:outputText value="Gebruikernaam" />
+                <h:inputText id="gebruikernaam" value="#{gebruikerController.gebruikernaam}"></h:inputText>
+                <h:message for="gebruikernaam"></h:message>
+                <br></br><br></br>
+
+                <h:outputText value="Wachtwoord" />
+                <h:inputSecret id="wachtwoord" value="#{gebruikerController.wachtwoord}"></h:inputSecret>
+                <h:message for="wachtwoord"></h:message>
+                <br></br><br></br>
+
+                <h:commandButton action="#{gebruikerController.valideerGebruikernaamWachtwoord}"
+                                 value="Login"></h:commandButton>
+            </h:form>
+        </div>
+        <div class="modal-footer">
+            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
     <footer class="page-footer blue lighten-1">
         <div class="container">
             <div class="row">
@@ -73,6 +99,7 @@
     <script>
         $(document).ready(function(){
             $('.sidenav').sidenav();
+            $('.modal').modal();
         });
     </script>
 </h:body>

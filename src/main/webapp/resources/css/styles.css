@@ -1,9 +1,30 @@
+body {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+}
+
 header, main, footer {
     padding-left: 300px;
 }
 
-@media only screen and (max-width : 992px) {
+@media only screen and (max-width: 992px) {
     header, main, footer {
         padding-left: 0;
     }
 }
+
+.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td, .ui-datatable tfoot th {
+    border: 0;
+}
+
+/* Verwijderen van borders bij p:tags */
+.ui-datatable thead th, .ui-datatable tbody td, .ui-datatable tfoot td, .ui-datatable tfoot th {
+    border: 0;
+}
+
+

@@ -1,6 +1,8 @@
 package be.thomasmore.travelmore.domain;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 @Entity
@@ -37,6 +39,10 @@ public class Reis {
     private Date startdatum;
     @Column(name = "einddatum")
     private Date einddatum;
+    @Column(name = "afbeelding")
+    private String afbeelding;
+
+
 
     public int getId() {
         return id;
@@ -109,4 +115,35 @@ public class Reis {
     public void setEinddatum(Date einddatum) {
         this.einddatum = einddatum;
     }
+
+    public String getAfbeelding() {
+        if  (this.afbeelding == null || this.afbeelding.isEmpty()){
+            System.out.println("REEEEEEEEEEEEE");
+            return "unavailable.png";
+        } else{
+            return afbeelding;
+        }
+    }
+
+    public void setAfbeelding(String afbeelding) { this.afbeelding = afbeelding; }
+
+
+    /* Pretty dates */
+    public String convertDate(Date date)
+    {
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
+        return sdf.format(date);
+    }
+
+    public String getStartdatumPretty()
+    {
+        return this.convertDate(this.startdatum);
+
+    }
+
+    public String getEinddatumPretty()
+    {
+        return this.convertDate(this.einddatum);
+    }
+
 }
