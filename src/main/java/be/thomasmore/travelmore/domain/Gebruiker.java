@@ -1,15 +1,20 @@
 package be.thomasmore.travelmore.domain;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
 import javax.validation.constraints.Size;
 
 @Entity
 @Table(name = "gebruiker")
+@NamedQueries({
+        @NamedQuery(
+                name = Gebruiker.LOGIN_GEBRUIKER,
+                query = "SELECT g FROM Gebruiker g WHERE g.email= :OpgegevenEmail AND g.wachtwoord= :OpgegevenWachtwoord"
+        )
+})
 
 public class Gebruiker {
+    public static final String LOGIN_GEBRUIKER = "Gebruiker.loginGebruiker";
+
     @Id
     private int id;
     @Column(name = "rolId")
@@ -93,5 +98,10 @@ public class Gebruiker {
 
     public void setWachtwoord(String wachtwoord) {
         this.wachtwoord = wachtwoord;
+    }
+
+    @Override
+    public String toString(){
+        return getNaam();
     }
 }

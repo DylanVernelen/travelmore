@@ -27,4 +27,8 @@ header, main, footer {
     border: 0;
 }
 
+#loginButton {
+    margin-right: 5%;
+}
+
 
