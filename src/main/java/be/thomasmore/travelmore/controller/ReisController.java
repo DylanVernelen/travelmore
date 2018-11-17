@@ -12,6 +12,7 @@ import java.util.List;
 @ViewScoped
 public class ReisController {
     private Reis nieuweReis = new Reis();
+    private List<Reis> gefilterdeReizen;
 
     @Inject
     private ReisService reisService;
@@ -20,6 +21,12 @@ public class ReisController {
     public List<Reis> getAll(){
         return this.reisService.findAll();
     }
+
+    public String filter(int vertrekId, int bestemmingId){
+        /*gefilterdeReizen = reisService.filter(vertrekId, bestemmingId);*/
+        return "reizenFilter";
+    }
+
 
     public Reis getNieuweReis() {
         return nieuweReis;
@@ -35,4 +42,11 @@ public class ReisController {
         this.reisService.insert(nieuweReis);
     }
 
+    public List<Reis> getGefilterdeReizen() {
+        return gefilterdeReizen;
+    }
+
+    public void setGefilterdeReizen(List<Reis> gefilterdeReizen) {
+        this.gefilterdeReizen = gefilterdeReizen;
+    }
 }

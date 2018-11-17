@@ -9,6 +9,18 @@
 
 <ui:composition template="/templates/template.xhtml">
     <ui:define name="content">
+        <header>
+            <div class="container">
+                <div class="row">
+                    <div class="col s12">
+                        <h1 class="header">
+                            <span class="blue-text">TRA</span><span class="orange-text">VEL</span><span class="red-text">MORE</span>
+                        </h1>
+                        <div class="divider"></div>
+                    </div>
+                </div>
+            </div>
+        </header>
         <main>
             <div class="container">
                 <div class="row">
@@ -23,21 +35,18 @@
                     <h:commandButton action="#{reisController.filter(vertrek.id, bestemming.id)}" value="Filter" styleClass="btn blue lighten-1"/>
                 </div>
                 <div class="row">
-                <ui:repeat value="#{reisController.all}" var="reis">
+                <ui:repeat value="#{reisController.gefilterdeReizen}" var="reis">
 
 
                         <div class="col s12 m4">
                             <div class="card">
                                 <div class="card-image">
                                     <p:graphicImage value="resources/img/#{reis.afbeelding}"/>
+                                    <span class="card-title"><h:outputText value="#{reis.naam}"/></span>
                                 </div>
                                 <div class="card-content">
                                     <table>
                                         <tbody>
-                                        <tr>
-                                            <td><h5><h:outputText value="#{reis.naam}"/></h5>
-                                            </td>
-                                        </tr>
                                         <tr>
                                             <td><h:outputText value="Plaatsen: x/#{reis.aantalPlaatsen} beschikbaar"/>
                                             </td>
