@@ -27,7 +27,6 @@ public class ReisController {
         return "reizenFilter";
     }
 
-
     public Reis getNieuweReis() {
         return nieuweReis;
     }
