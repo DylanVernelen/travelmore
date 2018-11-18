@@ -18,5 +18,7 @@ public class ReisService {
 
     public void insert(Reis reis) { reisRepository.insert(reis);}
 
-    /*public List<Reis> filter(int vertrekId, int bestemmingId) { return  reisRepository.filter(vertrekId, bestemmingId);}*/
+    public List<Reis> filter(Reis filterReis) {
+        return  reisRepository.filter(filterReis);
+    }
 }

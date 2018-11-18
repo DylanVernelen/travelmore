@@ -1,5 +1,6 @@
 package be.thomasmore.travelmore.controller;
 
+import be.thomasmore.travelmore.domain.Locatie;
 import be.thomasmore.travelmore.domain.Reis;
 import be.thomasmore.travelmore.service.ReisService;
 
@@ -14,6 +15,9 @@ public class ReisController {
     private Reis nieuweReis = new Reis();
     private List<Reis> gefilterdeReizen;
 
+    private int filterVertrekId;
+    private int filterBestemmingId;
+
     @Inject
     private ReisService reisService;
 
@@ -22,8 +26,20 @@ public class ReisController {
         return this.reisService.findAll();
     }
 
-    public String filter(int vertrekId, int bestemmingId){
-        /*gefilterdeReizen = reisService.filter(vertrekId, bestemmingId);*/
+    public List<Reis> getGefilterd(){
+        Reis filterReis = new Reis();
+        Locatie filterVertrek = new Locatie();
+        filterVertrek.setId(filterVertrekId);
+        Locatie filterBestemming = new Locatie();
+        filterBestemming.setId(filterBestemmingId);
+        filterReis.setVertrek(filterVertrek);
+        filterReis.setBestemming(filterBestemming);
+        return this.reisService.filter(filterReis);
+    }
+
+    public String filter(){
+        System.out.println(filterVertrekId);
+        System.out.println("test");
         return "reizenFilter";
     }
 
@@ -47,5 +63,21 @@ public class ReisController {
 
     public void setGefilterdeReizen(List<Reis> gefilterdeReizen) {
         this.gefilterdeReizen = gefilterdeReizen;
+    }
+
+    public int getFilterVertrekId() {
+        return filterVertrekId;
+    }
+
+    public void setFilterVertrekId(int filterVertrekId) {
+        this.filterVertrekId = filterVertrekId;
+    }
+
+    public int getFilterBestemmingId() {
+        return filterBestemmingId;
+    }
+
+    public void setFilterBestemmingId(int filterBestemmingId) {
+        this.filterBestemmingId = filterBestemmingId;
     }
 }

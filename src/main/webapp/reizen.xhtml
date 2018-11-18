@@ -12,15 +12,17 @@
         <main>
             <div class="container">
                 <div class="row">
-                    <h:outputLabel for="vertrekId" value="Kies je vertrek:"/>
-                    <h:selectOneMenu id="vertrekId" binding="#{gekozenVertrek}">
-                        <f:selectItems value="#{locatieController.locations}" var="vertrek" itemValue="#{vertrek.id}" itemLabel="#{vertrek.naam}"  />
-                    </h:selectOneMenu>
-                    <h:outputLabel for="bestemmingId" value="Kies je vertrek:"/>
-                    <h:selectOneMenu id="bestemmingId" binding="#{gekozenBestemming}">
-                        <f:selectItems value="#{locatieController.locations}" var="bestemming" itemValue="#{bestemming.id}" itemLabel="#{bestemming.naam}"  />
-                    </h:selectOneMenu>
-                    <h:commandButton action="#{reisController.filter(vertrek.id, bestemming.id)}" value="Filter" styleClass="btn blue lighten-1"/>
+                    <h:form>
+                        <h:outputLabel for="vertrek" value="Kies je vertrek:"/>
+                        <h:selectOneMenu id="vertrek" value="#{reisController.filterVertrekId}">
+                            <f:selectItems value="#{locatieController.locations}" var="vertrek" itemValue="#{vertrek.id}" itemLabel="#{vertrek.naam}"  />
+                        </h:selectOneMenu>
+                        <h:outputLabel for="bestemming" value="Kies je bestemming:"/>
+                        <h:selectOneMenu id="bestemming" value="#{reisController.filterBestemmingId}">
+                            <f:selectItems value="#{locatieController.locations}" var="bestemming" itemValue="#{bestemming.id}" itemLabel="#{bestemming.naam}"  />
+                        </h:selectOneMenu>
+                        <h:commandButton action="#{reisController.filter}" value="Filter" styleClass="btn blue lighten-1"/>
+                    </h:form>
                 </div>
                 <div class="row">
                 <ui:repeat value="#{reisController.all}" var="reis">
