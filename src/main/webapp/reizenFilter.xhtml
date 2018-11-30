@@ -11,21 +11,58 @@
     <ui:define name="content">
         <main>
             <div class="container">
+                <ul class="collapsible">
+                    <li>
+                        <div class="collapsible-header"><i class="material-icons">search</i>Filter</div>
+                        <div class="collapsible-body">
+                            <div class="row">
+                                <h:form>
+                                    <div class="row">
+                                        <div class="col s3">
+                                            <h:outputLabel for="vertrek" value="Kies je vertrek:"/>
+                                            <p:selectOneMenu id="vertrek" value="#{reisController.filterVertrekId}" style="display: block"
+                                                             effect="fade" filter="true" filterMatchMode="contains">
+                                                <f:selectItem itemLabel="Alle vertrekplaatsen" itemValue="#{null}" noSelectionOption="true"/>
+                                                <f:selectItems value="#{locatieController.locations}" var="vertrek" itemValue="#{vertrek.id}" itemLabel="#{vertrek.naam}"  />
+                                            </p:selectOneMenu>
+                                        </div>
+                                        <div class="col s3">
+                                            <h:outputLabel for="bestemming" value="Kies je bestemming:"/>
+                                            <p:selectOneMenu id="bestemming" value="#{reisController.filterBestemmingId}" style="display: block"
+                                                             effect="fade" filter="true" filterMatchMode="contains">
+                                                <f:selectItem itemLabel="Alle bestemmingen" itemValue="#{null}" noSelectionOption="true"/>
+                                                <f:selectItems value="#{locatieController.locations}" var="bestemming" itemValue="#{bestemming.id}" itemLabel="#{bestemming.naam}"  />
+                                            </p:selectOneMenu>
+                                        </div>
+                                        <div class="col s3">
+                                            <h:outputLabel for="transportmiddel" value="Kies je transportmiddel:"/>
+                                            <p:selectOneMenu id="transportmiddel" value="#{reisController.filterTransportmiddelId}" style="display: block"
+                                                             effect="fade" filter="true" filterMatchMode="contains">
+                                                <f:selectItem itemLabel="Alle transportmiddelen" itemValue="#{null}" noSelectionOption="true"/>
+                                                <f:selectItems value="#{transportmiddelController.transportmiddelen}" var="transportmiddel" itemValue="#{transportmiddel.id}" itemLabel="#{transportmiddel.naam}"  />
+                                            </p:selectOneMenu>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col s3">
+                                            <h:outputLabel for="budget" value="Budget:"/>
+                                            <p:spinner id="budget" value="#{reisController.filterBudget}" prefix="€" min="0" style="padding-right:30px" />
+                                        </div>
+                                        <div class="col s3">
+                                            <h:outputLabel for="plaatsen" value="Beschikbare plaatsen:"/>
+                                            <p:spinner id="plaatsen" value="#{reisController.filterPlaatsen}" min="0" style="padding-right:30px" />
+                                        </div>
+                                        <div class="col s2">
+                                            <h:commandButton action="#{reisController.filter}" value="Filter" styleClass="btn blue lighten-1"/>
+                                        </div>
+                                    </div>
+                                </h:form>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
                 <div class="row">
-                    <h:form>
-                        <h:outputLabel for="vertrek" value="Kies je vertrek:"/>
-                        <h:selectOneMenu id="vertrek" value="#{reisController.filterVertrekId}">
-                            <f:selectItems value="#{locatieController.locations}" var="vertrek" itemValue="#{vertrek.id}" itemLabel="#{vertrek.naam}"  />
-                        </h:selectOneMenu>
-                        <h:outputLabel for="bestemming" value="Kies je bestemming:"/>
-                        <h:selectOneMenu id="bestemming" value="#{reisController.filterBestemmingId}">
-                            <f:selectItems value="#{locatieController.locations}" var="bestemming" itemValue="#{bestemming.id}" itemLabel="#{bestemming.naam}"  />
-                        </h:selectOneMenu>
-                        <h:commandButton action="#{reisController.filter}" value="Filter" styleClass="btn blue lighten-1"/>
-                    </h:form>
-                </div>
-                <div class="row">
-                    <ui:repeat value="#{reisController.gefilterd}" var="reis">
+                    <ui:repeat value="#{reisController.gefilterdeReizen}" var="reis">
                         <div class="col s12 m4">
                             <div class="card">
                                 <div class="card-image">
@@ -55,8 +92,10 @@
                                             <td><h:outputText value="Aankomst: #{reis.bestemming.naam}"/></td>
                                         </tr>
                                         <tr>
-                                            <td><h:outputText value="Transportmiddel: #{reis.transportmiddel.naam}"/>
-                                            </td>
+                                            <td><h:outputText value="Transportmiddel: #{reis.transportmiddel.naam}"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><h:outputText value="Prijs: €#{reis.kostprijs}"/></td>
                                         </tr>
                                         </tbody>
                                     </table>
@@ -67,7 +106,7 @@
                             </div>
                         </div>
                     </ui:repeat>
-                    <p >Er zijn geen reizen gevonden met jou filtercriteria.</p>
+                    <p><h:outputText value="Er zijn geen reizen gevonden met jou filtercriteria." rendered="#{empty reisController.gefilterdeReizen}" /></p>
                 </div>
             </div>
         </main>

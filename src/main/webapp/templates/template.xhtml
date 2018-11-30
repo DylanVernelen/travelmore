@@ -18,6 +18,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
 </h:head>
 <h:body>
+    <!-- atleast one p: tag that needs jquery -->
+    <p:selectOneMenu style="display: none"/>
     <h:form>
         <nav class="blue lighten-1">
             <div class="nav-wrapper">
@@ -112,15 +114,12 @@
         </div>
     </footer>
     <!--JavaScript loading-->
-    <script
-            src="https://code.jquery.com/jquery-3.3.1.min.js"
-            integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
-            crossorigin="anonymous"></script>
     <script type="text/javascript" src="resources/js/materialize.min.js"></script>
     <script>
         $(document).ready(function(){
             $('.sidenav').sidenav();
             $('.modal').modal();
+            $('.collapsible').collapsible();
         });
     </script>
 </h:body>
