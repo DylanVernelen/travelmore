@@ -10,21 +10,28 @@ import javax.servlet.http.HttpSession;
 
 @ManagedBean
 @ViewScoped
-@SessionScoped
 public class GebruikerController {
     private Gebruiker nieuweGebruiker = new Gebruiker();
     private String gebruikernaam;
     private String wachtwoord;
 
+    public String getValideerGebruikernaamWachtwoord() {
+        return valideerGebruikernaamWachtwoord;
+    }
+
+    public void setValideerGebruikernaamWachtwoord(String valideerGebruikernaamWachtwoord) {
+        this.valideerGebruikernaamWachtwoord = valideerGebruikernaamWachtwoord;
+    }
+
+    private String valideerGebruikernaamWachtwoord;
+
     @Inject
    private GebruikerService gebruikerService;
-
 
     public Gebruiker getNieuweGebruiker() {
         return nieuweGebruiker;
 
     }
-
 
     public void setNieuweGebruiker(Gebruiker nieuweGebruiker) {
         this.nieuweGebruiker = nieuweGebruiker;
@@ -32,11 +39,15 @@ public class GebruikerController {
 
 
     public void registreer(){
+
         this.nieuweGebruiker.setRolId(1);
         this.gebruikerService.insert(this.nieuweGebruiker);
+        this.index();
         }
 
-
+    public String index() {
+        return "index";
+    }
     public String getGebruikernaam() {
         return gebruikernaam;
     }
