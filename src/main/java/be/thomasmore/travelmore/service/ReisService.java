@@ -15,4 +15,10 @@ public class ReisService {
     public List<Reis> findAll() {
         return reisRepository.findAll();
     }
+
+    public void insert(Reis reis) { reisRepository.insert(reis);}
+
+    public List<Reis> filter(Reis filterReis) {
+        return  reisRepository.filter(filterReis);
+    }
 }

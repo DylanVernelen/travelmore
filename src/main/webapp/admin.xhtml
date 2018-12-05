@@ -11,12 +11,15 @@
     <ui:define name="content">
         <main>
             <div class="container">
-                <h3>Locaties - Lijst</h3>
-                <p:dataTable var="locatie" value="#{locatieController.locations}" id="locatieDataTable">
-                    <p:column headerText="Naam">
-                        <h:outputText value="#{locatie.naam}"/>
-                    </p:column>
-                </p:dataTable>
+                <h3>Admin</h3>
+                <div class="section">
+                    <div class="row">
+                        <h5>Reisbeheer</h5>
+                        <p>Reis toevoegen, verwijderen, updaten</p>
+                        <h:outputLink styleClass="btn blue lighten-1" value="reisbeheer.xhtml">Reizen beheren</h:outputLink>
+                        <div class="divider"></div>
+                    </div>
+                </div>
             </div>
         </main>
     </ui:define>

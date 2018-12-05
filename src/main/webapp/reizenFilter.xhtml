@@ -62,9 +62,7 @@
                     </li>
                 </ul>
                 <div class="row">
-                <ui:repeat value="#{reisController.all}" var="reis">
-
-
+                    <ui:repeat value="#{reisController.gefilterdeReizen}" var="reis">
                         <div class="col s12 m4">
                             <div class="card">
                                 <div class="card-image">
@@ -103,17 +101,12 @@
                                     </table>
                                 </div>
                                 <div class="card-action">
-                                        <a href="#">Reis boeken</a>
+                                    <a href="#">Reis boeken</a>
                                 </div>
                             </div>
                         </div>
-
-
-
-
-
-
-                </ui:repeat>
+                    </ui:repeat>
+                    <p><h:outputText value="Er zijn geen reizen gevonden met jou filtercriteria." rendered="#{empty reisController.gefilterdeReizen}" /></p>
                 </div>
             </div>
         </main>

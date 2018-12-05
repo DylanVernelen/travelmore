@@ -37,13 +37,14 @@ ALTER TABLE gebruiker
 CREATE TABLE reis (
   id  int(11) NOT NULL AUTO_INCREMENT,
   naam varchar(255) NOT NULL,
-  vertrekId int(11) NOT NULL,
-  bestemmingId int(11) NOT NULL,
+  afbeelding varchar(255) DEFAULT NULL,
+  vertrek_id int(11) NOT NULL,
+  bestemming_id int(11) NOT NULL,
   aantalPlaatsen int(11) NOT NULL,
   kostprijs double NOT NULL,
   startdatum datetime NOT NULL,
   einddatum datetime NOT NULL,
-  transportmiddelId int(11) NOT NULL,
+  transportmiddel_id int(11) NOT NULL,
   PRIMARY KEY (id),
   UNIQUE KEY id_UNIQUE (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -63,17 +64,17 @@ CREATE TABLE locatie (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE reis
-  ADD KEY transportmiddelId (transportmiddelId),
-  ADD KEY vertrekId (vertrekId),
-  ADD KEY bestemmingId (bestemmingId);
+  ADD KEY transportmiddel_id (transportmiddel_id),
+  ADD KEY vertrek_id (vertrek_id),
+  ADD KEY bestemming_id (bestemming_id);
 
 ALTER TABLE reis
   ADD CONSTRAINT reis_ibfk_1 FOREIGN KEY
-  (transportmiddelId) REFERENCES transportmiddel (id),
+  (transportmiddel_id) REFERENCES transportmiddel (id),
   ADD CONSTRAINT reis_ibfk_2 FOREIGN KEY
-  (vertrekId) REFERENCES locatie (id),
+  (vertrek_id) REFERENCES locatie (id),
   ADD CONSTRAINT reis_ibfk_3 FOREIGN KEY
-  (bestemmingId) REFERENCES  locatie (id);
+  (bestemming_id) REFERENCES  locatie (id);
 
 CREATE TABLE boeking (
   id  int(11) NOT NULL AUTO_INCREMENT,
@@ -120,5 +121,22 @@ ALTER TABLE betaling
 ALTER TABLE betaling
   ADD CONSTRAINT betaling_ibfk_2 FOREIGN KEY
   (betalingstypeId) REFERENCES betalingstype (id);
+
+INSERT INTO `locatie` (`id`, `naam`) VALUES
+	(1, 'Geel'),
+	(2, 'Parijs'),
+	(3, 'Brussel'),
+	(4, 'Berlijn');
+
+INSERT INTO `transportmiddel` (`id`, `naam`) VALUES
+	(1, 'Auto'),
+	(2, 'Vliegtuig'),
+	(3, 'Bus');
+
+INSERT INTO `reis` (`id`, `naam`, `afbeelding`, `vertrek_id`, `bestemming_id`, `aantalPlaatsen`, `kostprijs`, `startdatum`, `einddatum`, `transportmiddel_id`) VALUES
+	(2, 'Reis naar Parijs', 'parijs.jpg', 2, 2, 10, 249, '2018-01-01 00:00:00', '2018-01-07 00:00:00', 1),
+	(3, 'Driedaagse naar Berlijn', 'berlijn.jpg', 3, 4, 25, 399, '2018-01-08 00:00:00', '2018-01-11 00:00:00', 2),
+	(4, 'Reis naar Geel', 'geel.jpg', 1, 1, 5, 150, '2018-01-23 00:00:00', '2018-01-25 00:00:00', 3);
+
 
 COMMIT;

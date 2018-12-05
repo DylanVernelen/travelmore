@@ -1,0 +1,73 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:composition template="/templates/template.xhtml">
+    <ui:define name="content">
+        <main>
+            <div class="container">
+                <h3>Admin - Reisbeheer</h3>
+                <div class="section">
+                    <div class="row">
+                        <table class="responsive-table">
+                            <thead>
+                            <tr>
+                                <th>Reisnaam</th>
+                                <th>Totaal Plaatsen</th>
+                                <th>Startdatum</th>
+                                <th>Einddatum</th>
+                                <th>Vertrekplaats</th>
+                                <th>Bestemming</th>
+                                <th>Transportmiddel</th>
+                                <th>Foto-pad</th>
+                                <th></th>
+                            </tr>
+                            </thead>
+                            <tbody>
+                                <h:form>
+                                    <tr>
+                                        <td><h:inputText value="#{reisController.nieuweReis.naam}"/></td>
+                                        <td><h:inputText value="#{reisController.nieuweReis.aantalPlaatsen}"/></td>
+                                        <td><p:calendar id="popup" value="#{reisController.nieuweReis.startdatum}"/></td>
+                                        <td><p:calendar id="popup2" value="#{reisController.nieuweReis.einddatum}"/></td>
+
+                                        <td><h:selectOneMenu value="#{reisController.nieuweReis.vertrek}">
+                                            <f:selectItems value="#{locatieController.locations}" var="locatie" itemValue="#{locatie}" itemLabel="#{locatie.naam}"/>
+                                        </h:selectOneMenu> </td>
+                                        <td><h:selectOneMenu value="#{reisController.nieuweReis.bestemming}">
+                                            <f:selectItems value="#{locatieController.locations}" var="locatie" itemValue="#{locatie}" itemLabel="#{locatie.naam}"/>
+                                        </h:selectOneMenu> </td>
+                                        <td><h:selectOneMenu value="#{reisController.nieuweReis.transportmiddel}">
+                                            <f:selectItems value="#{transportmiddelController.transportmiddelen}" var="transportmiddel" itemValue="#{transportmiddel}" itemLabel="#{transportmiddel.naam}"/>
+                                        </h:selectOneMenu> </td>
+                                        <td><h:inputText value="#{reisController.nieuweReis.afbeelding}"/></td>
+                                        <td><h:commandButton styleClass="btn blue lighten-1" action="#{reisController.createReis()}" value="Add"/></td>
+                                    </tr>
+                                </h:form>
+                                <ui:repeat value="#{reisController.all}" var="reis">
+                                    <tr>
+                                        <td><h:outputText value="#{reis.naam}"/></td>
+                                        <td><h:outputText value="#{reis.aantalPlaatsen} beschikbaar"/></td>
+                                        <td><h:outputText value="#{reis.startdatumPretty}"/></td>
+                                        <td><h:outputText value="#{reis.einddatumPretty}"/></td>
+                                        <td><h:outputText value="#{reis.vertrek.naam}"/></td>
+                                        <td><h:outputText value="#{reis.bestemming.naam}"/></td>
+                                        <td><h:outputText value="#{reis.transportmiddel.naam}"/></td>
+                                        <td><h:outputText value="#{reis.afbeelding}"/></td>
+                                        <td><h:commandButton styleClass="btn red lighten-1" value="Del"/></td>
+                                    </tr>
+                                </ui:repeat>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </ui:define>
+</ui:composition>
+</html>

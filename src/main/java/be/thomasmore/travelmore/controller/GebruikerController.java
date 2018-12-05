@@ -2,17 +2,18 @@ package be.thomasmore.travelmore.controller;
 import be.thomasmore.travelmore.domain.Gebruiker;
 import be.thomasmore.travelmore.service.GebruikerService;
 import be.thomasmore.travelmore.domain.Gebruiker;
+
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
-import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
-import javax.servlet.http.HttpSession;
 
 @ManagedBean
-@ViewScoped
+@SessionScoped
+
 public class GebruikerController {
     private Gebruiker nieuweGebruiker = new Gebruiker();
-    private String gebruikernaam;
+    private Gebruiker ingelogdeGebruiker = new Gebruiker();
+    private String email;
     private String wachtwoord;
 
     public String getValideerGebruikernaamWachtwoord() {
@@ -28,6 +29,16 @@ public class GebruikerController {
     @Inject
    private GebruikerService gebruikerService;
 
+    public void valideer(){
+        Gebruiker inkomendeGebruiker = this.gebruikerService.gebruikerLogin(this.email, this.wachtwoord);
+        if(inkomendeGebruiker != null){
+            this.ingelogdeGebruiker = inkomendeGebruiker;
+        } else {
+            this.ingelogdeGebruiker.setNaam("Gebruiker niet gevonden");
+        }
+    }
+
+
     public Gebruiker getNieuweGebruiker() {
         return nieuweGebruiker;
 
@@ -37,23 +48,29 @@ public class GebruikerController {
         this.nieuweGebruiker = nieuweGebruiker;
     }
 
-
     public void registreer(){
 
         this.nieuweGebruiker.setRolId(1);
         this.gebruikerService.insert(this.nieuweGebruiker);
+
         this.index();
         }
 
     public String index() {
         return "index";
     }
-    public String getGebruikernaam() {
+
+    /*public String getGebruikernaam() {
         return gebruikernaam;
+    }*/
+
+    public String getEmail() {
+        return email;
+
     }
 
-    public void setGebruikernaam(String gebruikernaam) {
-        this.gebruikernaam = gebruikernaam;
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getWachtwoord() {
@@ -62,5 +79,13 @@ public class GebruikerController {
 
     public void setWachtwoord(String wachtwoord) {
         this.wachtwoord = wachtwoord;
+    }
+
+    public Gebruiker getIngelogdeGebruiker() {
+        return ingelogdeGebruiker;
+    }
+
+    public void setIngelogdeGebruiker(Gebruiker ingelogdeGebruiker) {
+        this.ingelogdeGebruiker = ingelogdeGebruiker;
     }
 }
