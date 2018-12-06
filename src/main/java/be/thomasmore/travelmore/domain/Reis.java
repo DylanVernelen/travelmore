@@ -1,5 +1,6 @@
 package be.thomasmore.travelmore.domain;
 
+import javax.inject.Named;
 import javax.persistence.*;
 import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
@@ -12,11 +13,16 @@ import java.util.Date;
                 @NamedQuery(
                         name = Reis.FIND_ALL,
                         query = "SELECT r FROM Reis r"
+                ),
+                @NamedQuery(
+                        name = Reis.DELETE,
+                        query = "DELETE FROM Reis r where r.id = :id"
                 )
         }
 )
 public class Reis {
     public static final String FIND_ALL = "Reis.findAll";
+    public static final String DELETE = "Reis.delete";
 
     @Id
     private int id;
