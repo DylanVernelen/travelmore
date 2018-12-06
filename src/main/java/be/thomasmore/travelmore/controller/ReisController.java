@@ -71,7 +71,6 @@ public void setDatums() {
     SimpleDateFormat formatter = new SimpleDateFormat(expectedPattern);
     try
     {
-        String userInput = this.eindDatum;
         Date einddatum = formatter.parse(this.vertrekDatum);
         Date begindatum = formatter.parse(this.eindDatum);
      this.nieuweReis.setEinddatum(einddatum);

@@ -10,7 +10,7 @@
 <ui:composition template="/templates/template.xhtml">
     <ui:define name="content">
         <main>
-            <c:if test="#{gebruikerController.ingelogdeGebruiker.rolId == 2}">
+        <c:if test="#{gebruikerController.ingelogdeGebruiker.rolId == 2}">
               <div class="container">
                 <h3>Admin - Reisbeheer</h3>
                 <div class="section">
@@ -80,7 +80,7 @@
                     </div>
                 </div>
             </div>
-            </c:if>
+         </c:if>
         </main>
     </ui:define>
 </ui:composition>
