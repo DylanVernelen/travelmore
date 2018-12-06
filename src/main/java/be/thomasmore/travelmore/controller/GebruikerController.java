@@ -50,6 +50,7 @@ public class GebruikerController {
     }
 
     public void registreer(){
+
        this.nieuweGebruiker.setRolId(1);
         this.gebruikerService.insert(this.nieuweGebruiker);
         this.nieuweGebruiker = new Gebruiker();
