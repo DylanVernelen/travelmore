@@ -20,6 +20,7 @@ import java.util.Date;
                 )
         }
 )
+
 public class Reis {
     public static final String FIND_ALL = "Reis.findAll";
     public static final String DELETE = "Reis.delete";
