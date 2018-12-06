@@ -58,8 +58,17 @@ public class ReisRepository {
       //   entityManager.remove(reis);
 
      }*/
-    public void delete(int id) {
-        entityManager.createNativeQuery(Reis.DELETE, Reis.class).setParameter("id", id);
 
-    }
+        public void delete(int id)
+        {
+
+           Reis reis = entityManager.find(Reis.class, id);
+
+            if(reis != null)
+                entityManager.remove( reis );
+            else
+                System.out.println("Ongeldige reis: " + id);
+        }
+        
+
 }
