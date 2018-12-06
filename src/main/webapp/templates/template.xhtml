@@ -38,6 +38,9 @@
                         </c:if>
                         <c:if test="#{gebruikerController.ingelogd}">
                             <h:form>
+                                &nbsp;
+                                &nbsp;
+                                &nbsp;
                                 <h:commandButton class="waves-effect waves-light btn" action="#{gebruikerController.logout()}" value="#{gebruikerController.login}"></h:commandButton>
                             </h:form>
                         </c:if>
@@ -169,6 +172,8 @@
                 },
                 error: function (data) {
                     console.log("error: ", data);
+                    $('#tableLocaties tr:gt(0)').remove();
+                    getLocaties();
                 }
             }
         )
@@ -188,7 +193,6 @@
                 error: function (data) {
                     console.log("error: ", data);
                     $('#tableLocaties tr:gt(0)').remove();
-
                     getLocaties();
                 }
             })
