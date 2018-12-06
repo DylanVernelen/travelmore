@@ -93,7 +93,6 @@ public void setDatums() {
         this.nieuweReis.setVertrek(this.vertrek);
         this.nieuweReis.setTransportmiddel(this.transportmiddel);
         this.reisService.insert(nieuweReis);
-
     }
 
 

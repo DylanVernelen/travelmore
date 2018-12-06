@@ -50,10 +50,16 @@ public class ReisRepository {
         return query.getResultList();
     }
 
-    public void delete(Reis reis) {
-        entityManager.remove(entityManager.contains(entityManager) ? entityManager : entityManager.merge(reis));
+    /* public void delete(Reis reis) {
+    //  entityManager.remove(entityManager.contains(entityManager) ? entityManager : entityManager.merge(reis));
+      entityManager.merge(reis);
+      entityManager.createNativeQuery()
+      entityManager.remove(reis);
+      //   entityManager.remove(reis);
+
+     }*/
+    public void delete(int id) {
+        entityManager.createNativeQuery(Reis.DELETE, Reis.class).setParameter("id", id);
 
     }
-    /*  public void delete(int id) {entityManager.createNamedQuery(Reis.DELETE, Reis.class).setParameter("id", id);
-    }*/
 }
