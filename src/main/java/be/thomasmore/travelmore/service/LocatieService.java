@@ -32,4 +32,9 @@ public class LocatieService {
         locatieRepository.insert(locatie);
     }
 
+    public void delete(int id)
+    {
+        locatieRepository.delete(id);
+    }
+
 }

@@ -21,4 +21,6 @@ public class ReisService {
     public List<Reis> filter(Reis filterReis) {
         return  reisRepository.filter(filterReis);
     }
+
+    public void delete(int id) { reisRepository.delete(id);}
 }

@@ -7,6 +7,7 @@ import javax.inject.Inject;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
+import java.util.List;
 
 /**
  * Created by freman on 18/10/2018.
@@ -19,15 +20,15 @@ public class LocatieRestService {
 
     @GET
     @Path("/getlocatie")
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Produces({ MediaType.APPLICATION_JSON })
     public Locatie getLocatieById(@QueryParam("id") int id) {
         return locatieService.findById(id);
     }
 
     @POST
     @Path("/addlocatie")
-    @Produces({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
-    @Consumes({ MediaType.APPLICATION_JSON, MediaType.APPLICATION_XML })
+    @Produces({ MediaType.APPLICATION_JSON })
+    @Consumes({ MediaType.APPLICATION_JSON })
     public Response addLocatie(Locatie location) {
         if (null != locatieService.findById(location.getId())) {
             return Response
@@ -37,5 +38,22 @@ public class LocatieRestService {
 
         locatieService.insert(location);
         return Response.status(Response.Status.CREATED).entity(location).build();
+    }
+
+    @GET
+    @Path("/getlocaties")
+    @Produces({MediaType.APPLICATION_JSON})
+    public List<Locatie> getLocaties()
+    {
+        return locatieService.findAllLocations();
+    }
+
+
+    @DELETE
+    @Path("/deletelocatie")
+    public void removeLocatieById(@QueryParam("id") int id)
+    {
+        locatieService.delete(id);
+
     }
 }

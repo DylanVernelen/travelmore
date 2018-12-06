@@ -74,6 +74,7 @@ public class ReisController {
         this.reisService.insert(nieuweReis);
     }
 
+
     public Locatie getBestemming() {
         return bestemming;
     }
@@ -112,6 +113,10 @@ public class ReisController {
 
     public void setTransportmiddel(Transportmiddel transportmiddel) {
         this.transportmiddel = transportmiddel;
+    }git a
+    public void deleteReis(int id){
+        this.reisService.delete(id);
+
     }
 
     public List<Reis> getGefilterdeReizen() {

@@ -36,6 +36,7 @@
                               <!--  <td><p:calendar id="popup" pattern="dd/mm/yyyy" value="#{reisController.vertrekDatum}"/></td>-->
                                     <!-- <td><p:calendar id="popup2" value="#{reisController.eindDatum}"/></td>-->
 
+<<<<<<< HEAD
                                                                             <td><h:selectOneMenu value="#{reisController.vertrek.id}">
                                                                                 <f:selectItems value="#{locatieController.locations}" var="locatie" itemValue="#{locatie.id}" itemLabel="#{locatie.naam}"/>
                                                                             </h:selectOneMenu> </td>
@@ -64,6 +65,34 @@
                                     <td><h:commandButton styleClass="btn red lighten-1" value="Del"/></td>
                                 </tr>
                             </ui:repeat>
+=======
+                                        <td><h:selectOneMenu value="#{reisController.nieuweReis.vertrek}">
+                                            <f:selectItems value="#{locatieController.locations}" var="locatie" itemValue="#{locatie}" itemLabel="#{locatie.naam}"/>
+                                        </h:selectOneMenu> </td>
+                                        <td><h:selectOneMenu value="#{reisController.nieuweReis.bestemming}">
+                                            <f:selectItems value="#{locatieController.locations}" var="locatie" itemValue="#{locatie}" itemLabel="#{locatie.naam}"/>
+                                        </h:selectOneMenu> </td>
+                                        <td><h:selectOneMenu value="#{reisController.nieuweReis.transportmiddel}">
+                                            <f:selectItems value="#{transportmiddelController.transportmiddelen}" var="transportmiddel" itemValue="#{transportmiddel}" itemLabel="#{transportmiddel.naam}"/>
+                                        </h:selectOneMenu> </td>
+                                        <td><h:inputText value="#{reisController.nieuweReis.afbeelding}"/></td>
+                                        <td><h:commandButton styleClass="btn blue lighten-1" action="#{reisController.createReis()}" value="Add"/></td>
+                                    </tr>
+                                </h:form>
+                                <ui:repeat value="#{reisController.all}" var="reis">
+                                    <tr>
+                                        <td><h:outputText value="#{reis.naam}"/></td>
+                                        <td><h:outputText value="#{reis.aantalPlaatsen} beschikbaar"/></td>
+                                        <td><h:outputText value="#{reis.startdatumPretty}"/></td>
+                                        <td><h:outputText value="#{reis.einddatumPretty}"/></td>
+                                        <td><h:outputText value="#{reis.vertrek.naam}"/></td>
+                                        <td><h:outputText value="#{reis.bestemming.naam}"/></td>
+                                        <td><h:outputText value="#{reis.transportmiddel.naam}"/></td>
+                                        <td><h:outputText value="#{reis.afbeelding}"/></td>
+                                        <td><h:commandButton styleClass="btn red lighten-1" value="Del" action="#{reisController.deleteReis(reis.id)}"/></td>
+                                    </tr>
+                                </ui:repeat>
+>>>>>>> ee1a535af40d85237b655257da0634281e92c8db
                             </tbody>
                         </table>
                     </div>

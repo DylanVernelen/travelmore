@@ -25,4 +25,8 @@ public class LocatieRepository {
         entityManager.persist(locatie);
     }
 
+    public void delete(int id)
+    {
+        entityManager.remove( entityManager.find(Locatie.class, id) );
+    }
 }

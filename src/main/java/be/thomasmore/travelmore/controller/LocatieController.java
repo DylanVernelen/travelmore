@@ -33,4 +33,5 @@ public class LocatieController {
         this.locatieService.insert(newLocation);
     }
 
+
 }

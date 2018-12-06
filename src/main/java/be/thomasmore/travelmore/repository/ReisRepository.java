@@ -37,4 +37,6 @@ public class ReisRepository {
         if(filterReis.getAantalPlaatsen() > 0) { query.setParameter("plaatsen", filterReis.getAantalPlaatsen()); }
         return query.getResultList();
     }
+
+    public void delete(int id) {entityManager.createNamedQuery(Reis.DELETE, Reis.class).setParameter("id", id);}
 }
