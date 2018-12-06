@@ -30,7 +30,9 @@ header, main, footer {
 #loginButton {
     margin-right: 5%;
 }
-
+.registreerknop {
+    margin-left: 50px !important;
+}
 select {
     display: inline-block;
 }

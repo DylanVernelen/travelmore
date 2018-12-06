@@ -73,10 +73,8 @@
     </ui:insert>
     <div id="loginModal" class="modal">
         <div class="modal-content">
-            <h4>Wie ben jij?</h4>
-            <h:outputLink styleClass="btn blue lighten-1" value="registreren.xhtml">Registreer</h:outputLink>
-            <p>OF</p>
-            <h3>Login:</h3>
+
+            <h3 class="title">Login</h3>
             <h:form>
                 <h:outputText value="Email" />
                 <h:inputText id="email" value="#{gebruikerController.mail}"></h:inputText>
@@ -87,8 +85,9 @@
                 <h:inputSecret id="wachtwoord" value="#{gebruikerController.password}"></h:inputSecret>
                 <h:message for="wachtwoord"></h:message>
                 <br></br><br></br>
-
-                <h:commandButton action="#{gebruikerController.valideer()}" value="Login"></h:commandButton>
+                <div class="row">
+                <h:commandButton styleClass="col s2 btn blue lighten-1" action="#{gebruikerController.valideer()}" value="Login"></h:commandButton>
+                <h:outputLink styleClass="registreerknop  offset-2 col s2  btn green lighten-1" value="registreren.xhtml">Registreer</h:outputLink></div>
             </h:form>
             <h:outputText value="#{gebruikerController.ingelogdeGebruiker.toString()}" />
         </div>

@@ -59,18 +59,15 @@ public class GebruikerController {
         this.password = "";
     }
 
-    public void registreer(){
+    public String registreer(){
 
        this.nieuweGebruiker.setRolId(1);
-        this.nieuweGebruiker.setRolId(1);
         this.gebruikerService.insert(this.nieuweGebruiker);
         this.nieuweGebruiker = new Gebruiker();
-        this.index();
+       return "index";
     }
 
-    public String index() {
-        return "reizen.xhtml";
-    }
+
 
     public Gebruiker getNieuweGebruiker() { return nieuweGebruiker; }
     public void setNieuweGebruiker(Gebruiker nieuweGebruiker) {
