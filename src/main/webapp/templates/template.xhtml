@@ -129,8 +129,16 @@
     </script>
 <script>
     $(document).ready(function () {
+        $('#tableLocatiesAdd').on('click', addLocatie);
+
+
+        getLocaties();
+    });
+
+    function getLocaties()
+    {
         $.ajax({
-            url: 'http://localhost:8080/travelmore/rest/locaties/getlocaties/',
+            url: 'rest/locaties/getlocaties/',
             method: 'GET',
             async: 'false',
             success: function (data) {
@@ -143,18 +151,46 @@
                 console.log("error: "+data[0].naam);
             }
         });
-    });
+    }
+
+    function addLocatie()
+    {
+        $.ajax(
+            {
+                url: 'rest/locaties/addlocatie/',
+                method: 'POST',
+                dataType: "application/json",
+                contentType: 'application/json',
+                data: JSON.stringify({'id': null, 'naam': $('#tableLocatiesText').val()}),
+                success: function (data) {
+                    console.log("success: "+data);
+                    $('#tableLocaties tr:gt(0)').remove();
+
+                    getLocaties();
+                },
+                error: function (data) {
+                    console.log("error: ", data);
+                }
+            }
+        )
+    }
 
     function deleteLocatie(id){
         console.log(id);
             $.ajax({
-                url: 'http://localhost:8080/travelmore/rest/locaties/deletelocatie/?id='+id,
+                url: 'rest/locaties/deletelocatie/?id='+id,
                 method: 'DELETE',
                 success: function (data) {
                     console.log("success: "+data);
+                    $('#tableLocaties tr:gt(0)').remove();
+
+                    getLocaties();
                 },
                 error: function (data) {
-                    console.log("error: "+ data);
+                    console.log("error: ", data);
+                    $('#tableLocaties tr:gt(0)').remove();
+
+                    getLocaties();
                 }
             })
     }

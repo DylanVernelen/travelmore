@@ -43,6 +43,7 @@ public class LocatieRestService {
     @GET
     @Path("/getlocaties")
     @Produces({MediaType.APPLICATION_JSON})
+    @Consumes({ MediaType.APPLICATION_JSON })
     public List<Locatie> getLocaties()
     {
         return locatieService.findAllLocations();
