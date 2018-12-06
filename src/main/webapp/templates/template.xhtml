@@ -112,8 +112,8 @@
                 </div>
             </div>
         </div>
-        <div class="footer-copyright">
-            <div class="container">
+        <div class="footer-copyright blue lighten-1">
+            <div class="container blue lighten-1">
                 © 2018 Copyright Travelmore
             </div>
         </div>
@@ -127,5 +127,22 @@
             $('.collapsible').collapsible();
         });
     </script>
+<script>
+    $(document).ready(function () {
+        $.ajax({
+            url: 'http://localhost:8082/travelmore/rest/locaties/getlocaties/',
+            method: 'GET',
+            success: function (data) {
+                console.log("success: "+data);
+                $.each(data, function (index, element) {
+                    $('#tableLocaties').append('<tr><td>'+element.naam+'</td><td><h:commandButton styleClass="btn red lighten-1" value="Del" action="#{reisController.deleteReis('+element.id+'.id)}"/></td></tr>');
+                })
+            },
+            error: function (data) {
+                console.log("error: "+data[0].naam);
+            }
+        });
+    })
+</script>
 </h:body>
 </html>
