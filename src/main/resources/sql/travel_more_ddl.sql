@@ -145,7 +145,13 @@ INSERT INTO `rol` (`id`, `naam`) VALUES
 
 
 INSERT INTO `gebruiker` (`id`, `rolId`, `naam`, `adres`, `woonplaats`, `email`, `wachtwoord`) VALUES
-	(1, 1, 'Dylan', 'thuis', 'Geel', 'dylanver@live.be', 'test');
+	(1, 1, 'Dylan', 'Kleinhoefstraat', 'Geel', 'dylanver@live.be', 'test');
+	(7, 1, 'User', 'Kleinhoefstraat', 'Geel', 'user@travelmore.be', 'ThomasMore1');
+  (2, 1, 'Sander', 'Pauwbroekstraat 45', 'Ham', 'sander.philipsen@hotmail.com', 'ThomasMore1');
+  (5, 1, 'Tom', 'Dorpstraat 10', 'Ham', 'tom@gmail.com', 'test') ;
+  (6, 1, 'Sander', 'Pauwbroekstraat 45', 'Ham', 'sander.philipsen@hotmail.com', 'test');
+  (3, 2, 'admin', 'Dorpstraat 45', 'Geel', 'admin@travelmore.be', 'ThomasMore1');
+  (4, 2, 'admin2', 'Kleinhoefstraat 4', 'Geel', 'admin2@travelmore.be', 'ThomasMore1');
 
 INSERT INTO `reis` (`id`, `naam`, `afbeelding`, `vertrek_id`, `bestemming_id`, `aantalPlaatsen`, `kostprijs`, `startdatum`, `einddatum`, `transportmiddel_id`) VALUES
 	(2, 'Reis naar Parijs', 'parijs.jpg', 2, 2, 10, 249, '2018-01-01 00:00:00', '2018-01-07 00:00:00', 1),
