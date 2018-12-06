@@ -140,7 +140,8 @@ INSERT INTO `transportmiddel` (`id`, `naam`) VALUES
 
 INSERT INTO `rol` (`id`, `naam`) VALUES
 	(1, 'Gebruiker'),
-	(2, 'Admin');
+	(2, 'Admin'),
+	(3, 'Bezoeker');
 INSERT INTO `reis` (`id`, `naam`, `afbeelding`, `vertrek_id`, `bestemming_id`, `aantalPlaatsen`, `kostprijs`, `startdatum`, `einddatum`, `transportmiddel_id`) VALUES
 	(2, 'Reis naar Parijs', 'parijs.jpg', 2, 2, 10, 249, '2018-01-01 00:00:00', '2018-01-07 00:00:00', 1),
 	(3, 'Driedaagse naar Berlijn', 'berlijn.jpg', 3, 4, 25, 399, '2018-01-08 00:00:00', '2018-01-11 00:00:00', 2),
