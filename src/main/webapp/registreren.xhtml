@@ -12,40 +12,47 @@
 
 <main>
 <f:view>
-    <h:form class="form offset-s2 col s8">
+    <h:form class="form offset-s2 col s6 pull-s2">
         <h2><h:outputText value="Registreer"/></h2>
             <div class="offset-s2 col s6">
             <label>Naam:</label>
            <div class="input-field">
-                <h:inputText  id="Naam" value="#{gebruikerController.nieuweGebruiker.naam}">
+                <h:inputText  requiredMessage="Je moet een naam invullen"   id="Naam" value="#{gebruikerController.nieuweGebruiker.naam}">
                 </h:inputText>
+               <h:message for="Naam" style="color:red" />
             </div>
             </div>
-                   <div class="  offset-s2 col s6 ">
+                   <div class="  offset-s2 col s6 pull-s4 ">
                         <label>Adress:</label>
                     <div class="input-field">
-                    <h:inputText   value="#{gebruikerController.nieuweGebruiker.adres}">
+                    <h:inputText id="Adres"  requiredMessage="Je moet een adres invullen"   value="#{gebruikerController.nieuweGebruiker.adres}">
                     </h:inputText>
+                        <h:message for="Adres" style="color:red" />
                     </div>
                     </div>
-                     <div class=" offset-s2 col s6 ">
+                     <div class=" offset-s2 col s6 pull-s4 ">
                         <label>Woonplaats:</label>
                     <div class="input-field ">
-                    <h:inputText   value="#{gebruikerController.nieuweGebruiker.woonplaats}">
+                    <h:inputText id="Woonplaats" requiredMessage="Je moet een woonplaats invullen"    value="#{gebruikerController.nieuweGebruiker.woonplaats}">
                     </h:inputText>
+                        <h:message for="Woonplaats" style="color:red" />
                     </div>
                     </div>
-                     <div class="offset-s2 col s6 ">
+                     <div class="offset-s2 col s6 pull-s4 ">
                          <label>Email:</label>
                      <div class="input-field ">
-                     <h:inputText value="#{gebruikerController.nieuweGebruiker.email}">
+                     <h:inputText required="true" id="Email" requiredMessage="Je moet een email adres ingeven"
+                                  validatorMessage="Dit is geen email address" value="#{gebruikerController.nieuweGebruiker.email}">
+
+                         <f:validateRegex pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+\\\\.[a-zA-Z0-9]+" />
                      </h:inputText>
+                         <h:message for="Email" style="color:red" />
                      </div>
                      </div>
-                   <div class="offset-s2 col s6">
+                   <div class="offset-s2 col s6 pull-s4">
                          <label>Wachtwoord:</label>
                      <div class="input-field  ">
-                         <h:inputSecret required="true" validatorMessage="Passwoord moet minstens 6 karakters lang zijn." id="Password" value="#{gebruikerController.nieuweGebruiker.wachtwoord}" >
+                         <h:inputSecret required="true" requiredMessage="Je moet een passwoord ingeven" validatorMessage="Passwoord moet minstens 6 karakters lang zijn." id="Password" value="#{gebruikerController.nieuweGebruiker.wachtwoord}" >
                              <f:validateLength minimum="6"  />
                          </h:inputSecret>
                          <h:message for="Password" style="color:red" />
