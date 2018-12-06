@@ -5,7 +5,7 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui" xmlns:c="http://java.sun.com/jsp/jstl/core">
 
 <ui:composition template="/templates/template.xhtml">
     <ui:define name="content">
@@ -78,7 +78,7 @@
                                             </td>
                                         </tr>
                                         <tr>
-                                            <td><h:outputText value="Plaatsen: x/#{reis.aantalPlaatsen} beschikbaar"/>
+                                            <td><h:outputText value="Plaatsen: #{reis.aantalPlaatsen} beschikbaar"/>
                                             </td>
                                         </tr>
                                         <tr>
@@ -104,7 +104,13 @@
                                 </div>
                                 <div class="card-action">
                                     <h:form>
-                                        <h:commandLink action="#{boekingController.boekReis(reis)}" value="Reis boeken" />
+                                        <c:if test="#{gebruikerController.ingelogd == true}">
+                                            <h:commandLink action="#{boekingController.boekReis(reis)}" value="Reis boeken" />
+                                        </c:if>
+
+                                        <c:if test="#{gebruikerController.ingelogd == false}">
+                                            <p>Meld eerst aan</p>
+                                        </c:if>
                                     </h:form>
                                 </div>
                             </div>
