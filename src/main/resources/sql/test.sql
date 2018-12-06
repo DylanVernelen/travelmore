@@ -151,7 +151,7 @@ INSERT INTO `rol` (`id`, `naam`) VALUES
 	(3, 'Bezoeker');
 
 INSERT INTO `gebruiker` (`id`, `rolId`, `naam`, `adres`, `woonplaats`, `email`, `wachtwoord`) VALUES
-	(1, 1, 'Dylan', 'thuis', 'Geel', 'temp@gmail.com', 'test');
+	(1, 1, 'Dylan', 'thuis', 'Geel', 'dylanver@live.be', 'test');
 
 
 

@@ -11,15 +11,15 @@ public class Boeking {
 
     @Id
     private int id;
-    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.MERGE})
     private Gebruiker gebruiker;
-    @ManyToOne(cascade = {CascadeType.PERSIST})
+    @ManyToOne(cascade = {CascadeType.MERGE})
     private Reis reis;
     @Column(name = "aantalPersonen")
     private int aantalPersonen;
     @Column(name = "opmerking")
     private String opmerking;
-    @OneToOne(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @OneToOne(cascade = {CascadeType.MERGE})
     private Betaling betaling;
 
     public int getId() {

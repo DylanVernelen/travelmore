@@ -65,6 +65,7 @@ public class ReisController {
         this.nieuweReis = nieuweReis;
     }
 
+
 public void setDatums() {
     String expectedPattern = "dd/mm/yyyy";
     SimpleDateFormat formatter = new SimpleDateFormat(expectedPattern);
@@ -84,6 +85,7 @@ public void setDatums() {
         e.printStackTrace();
     }
 }
+
 
     public void createReis(){
         this.setDatums();

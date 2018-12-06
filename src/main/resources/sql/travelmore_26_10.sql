@@ -20,11 +20,11 @@ USE `travelmore`;
 CREATE TABLE IF NOT EXISTS `betaling` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `datum` datetime NOT NULL,
-  `betalingstypeId` int(11) NOT NULL,
+  `betalingsType_id` int(11) NOT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `id_UNIQUE` (`id`),
-  KEY `betalingstypeId` (`betalingstypeId`),
-  CONSTRAINT `betaling_ibfk_2` FOREIGN KEY (`betalingstypeId`) REFERENCES `betalingstype` (`id`)
+  KEY `betalingsType_id` (`betalingsType_id`),
+  CONSTRAINT `betaling_ibfk_2` FOREIGN KEY (`betalingsType_id`) REFERENCES `betalingstype` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Structuur van  tabel travelmore.betalingstype wordt geschreven
@@ -151,6 +151,17 @@ INSERT INTO `transportmiddel` (`id`, `naam`) VALUES
 	(2, 'Vliegtuig'),
 	(3, 'Bus'),
 	(4, 'Fiets');
+
+INSERT INTO `rol` (`id`, `naam`) VALUES
+	(1, 'Gebruiker'),
+	(2, 'Admin'),
+	(3, 'Bezoeker');
+
+
+INSERT INTO `gebruiker` (`id`, `rolId`, `naam`, `adres`, `woonplaats`, `email`, `wachtwoord`) VALUES
+	(1, 1, 'Dylan', 'thuis', 'Geel', 'dylanver@live.be', 'test');
+
+
 /*!40000 ALTER TABLE `transportmiddel` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
 /*!40014 SET FOREIGN_KEY_CHECKS=IF(@OLD_FOREIGN_KEY_CHECKS IS NULL, 1, @OLD_FOREIGN_KEY_CHECKS) */;

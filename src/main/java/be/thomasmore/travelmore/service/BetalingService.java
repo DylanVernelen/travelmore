@@ -11,6 +11,10 @@ public class BetalingService {
     @Inject
     private BetalingRepository betalingRepository;
 
+    public Betaling getLaatsteBetaling(){
+        return betalingRepository.getLaatsteBetaling();
+    }
+
     public void insert(Betaling betaling) {
         betalingRepository.insert(betaling);
     }

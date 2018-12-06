@@ -5,11 +5,12 @@ import be.thomasmore.travelmore.domain.Gebruiker;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 
 @ManagedBean
 @SessionScoped
-
 public class GebruikerController {
     private Gebruiker nieuweGebruiker = new Gebruiker();
     private Gebruiker ingelogdeGebruiker = new Gebruiker();
@@ -31,6 +32,9 @@ public class GebruikerController {
        this.login = "Login";
        this.ingelogd = false;
        this.boodschap = "";
+       HttpSession session = (HttpSession)FacesContext.getCurrentInstance()
+               .getExternalContext().getSession(false);
+       session.removeAttribute("user");
     }
 
     public void valideer(){
@@ -41,6 +45,9 @@ public class GebruikerController {
             this.ingelogd = true;
             this.resetLoginpoging();
             this.boodschap = "Welkom " + this.ingelogdeGebruiker.getNaam();
+            HttpSession session = (HttpSession)FacesContext.getCurrentInstance()
+                    .getExternalContext().getSession(false);
+            session.setAttribute("user", this.ingelogdeGebruiker);
         } else {
             this.ingelogdeGebruiker.setNaam("Gebruiker niet gevonden");
             this.resetLoginpoging();
