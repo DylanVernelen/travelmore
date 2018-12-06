@@ -13,6 +13,7 @@ import java.util.List;
 public class LocatieController {
 
     private Locatie newLocation = new Locatie();
+    private String naam;
 
     @Inject
     private LocatieService locatieService;
@@ -30,8 +31,15 @@ public class LocatieController {
     }
 
     public void submit(){
+        this.newLocation.setNaam(this.naam);
         this.locatieService.insert(newLocation);
     }
 
+    public String getNaam() {
+        return naam;
+    }
 
+    public void setNaam(String naam) {
+        this.naam = naam;
+    }
 }

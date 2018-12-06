@@ -63,8 +63,6 @@ public class ReisController {
         this.nieuweReis = nieuweReis;
     }
 
-
-
     public void createReis(){
         this.nieuweReis.setBestemming(this.bestemming);
         this.nieuweReis.setEinddatum(this.eindDatum);
