@@ -31,6 +31,7 @@
                     </li>
                 </ul>
                 <ul class="right" id="loginButton">
+                    <li><h5>#{gebruikerController.boodschap}</h5></li>
                     <li>
                         <c:if test="#{!gebruikerController.ingelogd}">
                             <a class="waves-effect waves-light btn modal-trigger" href="#loginModal">#{gebruikerController.login}</a>

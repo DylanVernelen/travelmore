@@ -14,7 +14,7 @@ public class GebruikerController {
     private Gebruiker nieuweGebruiker = new Gebruiker();
     private Gebruiker ingelogdeGebruiker = new Gebruiker();
     private String valideerGebruikernaamWachtwoord;
-    private String login;
+    private String login, boodschap;
     private String mail, password;
     private Boolean ingelogd;
 
@@ -30,6 +30,7 @@ public class GebruikerController {
        this.ingelogdeGebruiker = new Gebruiker();
        this.login = "Login";
        this.ingelogd = false;
+       this.boodschap = "";
     }
 
     public void valideer(){
@@ -39,6 +40,7 @@ public class GebruikerController {
             this.login = "Logout";
             this.ingelogd = true;
             this.resetLoginpoging();
+            this.boodschap = "Welkom " + this.ingelogdeGebruiker.getNaam();
         } else {
             this.ingelogdeGebruiker.setNaam("Gebruiker niet gevonden");
             this.resetLoginpoging();
@@ -100,5 +102,13 @@ public class GebruikerController {
 
     public void setIngelogd(Boolean ingelogd) {
         this.ingelogd = ingelogd;
+    }
+
+    public String getBoodschap() {
+        return boodschap;
+    }
+
+    public void setBoodschap(String boodschap) {
+        this.boodschap = boodschap;
     }
 }
