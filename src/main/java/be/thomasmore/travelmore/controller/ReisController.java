@@ -1,17 +1,19 @@
 package be.thomasmore.travelmore.controller;
-
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import be.thomasmore.travelmore.domain.Locatie;
 import be.thomasmore.travelmore.domain.Reis;
 import be.thomasmore.travelmore.domain.Transportmiddel;
 import be.thomasmore.travelmore.service.ReisService;
 import org.primefaces.event.SelectEvent;
-
+import java.text.ParseException;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.bean.SessionScoped;
 import javax.faces.bean.ViewScoped;
 import javax.inject.Inject;
 import java.util.Date;
+import java.util.Locale;
 import java.util.List;
 
 @ManagedBean
@@ -27,8 +29,8 @@ public class ReisController {
     private int filterTransportmiddelId;
     private int filterBudget;
     private int filterPlaatsen;
-    private Date vertrekDatum;
-    private Date eindDatum;
+    private String vertrekDatum;
+    private String eindDatum;
     @Inject
     private ReisService reisService;
 
@@ -63,13 +65,35 @@ public class ReisController {
         this.nieuweReis = nieuweReis;
     }
 
+
+public void setDatums() {
+    String expectedPattern = "dd/mm/yyyy";
+    SimpleDateFormat formatter = new SimpleDateFormat(expectedPattern);
+    try
+    {
+        String userInput = this.eindDatum;
+        Date einddatum = formatter.parse(this.vertrekDatum);
+        Date begindatum = formatter.parse(this.eindDatum);
+     this.nieuweReis.setEinddatum(einddatum);
+     this.nieuweReis.setStartdatum(begindatum);
+
+    }
+    catch (ParseException e)
+    {
+        // execution will come here if the String that is given
+        // does not match the expected format.
+        e.printStackTrace();
+    }
+}
+
+
     public void createReis(){
+        this.setDatums();
         this.nieuweReis.setBestemming(this.bestemming);
-        this.nieuweReis.setEinddatum(this.eindDatum);
-        this.nieuweReis.setEinddatum(this.vertrekDatum);
         this.nieuweReis.setVertrek(this.vertrek);
         this.nieuweReis.setTransportmiddel(this.transportmiddel);
         this.reisService.insert(nieuweReis);
+
     }
 
 
@@ -77,19 +101,19 @@ public class ReisController {
         return bestemming;
     }
 
-    public Date getVertrekDatum() {
+    public String getVertrekDatum() {
         return vertrekDatum;
     }
 
-    public void setVertrekDatum(Date vertrekDatum) {
+    public void setVertrekDatum(String vertrekDatum) {
         this.vertrekDatum = vertrekDatum;
     }
 
-    public Date getEindDatum() {
+    public String getEindDatum() {
         return eindDatum;
     }
 
-    public void setEindDatum(Date eindDatum) {
+    public void setEindDatum(String eindDatum) {
         this.eindDatum = eindDatum;
     }
 
@@ -112,8 +136,9 @@ public class ReisController {
     public void setTransportmiddel(Transportmiddel transportmiddel) {
         this.transportmiddel = transportmiddel;
     }
-    public void deleteReis(int id){
-        this.reisService.delete(id);
+    public void deleteReis(Reis reis){
+
+       this.reisService.delete(reis);
 
     }
 
