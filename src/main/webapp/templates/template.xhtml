@@ -130,7 +130,7 @@
 <script>
     $(document).ready(function () {
         $.ajax({
-            url: 'http://localhost:8082/travelmore/rest/locaties/getlocaties/',
+            url: 'http://localhost:8080/travelmore/rest/locaties/getlocaties/',
             method: 'GET',
             async: 'false',
             success: function (data) {
@@ -147,18 +147,16 @@
 
     function deleteLocatie(id){
         console.log(id);
-        data1 = JSON.stringify({"id": id});
-        $.ajax({
-            url: 'http://localhost:8082/travelmore/rest/locaties/deletelocatie/',
-            method: 'DELETE',
-            data: data1,
-            success: function (data) {
-                console.log("success: "+data);
-            },
-            error: function (data) {
-                console.log("error: "+ data);
-            }
-        })
+            $.ajax({
+                url: 'http://localhost:8080/travelmore/rest/locaties/deletelocatie/?id='+id,
+                method: 'DELETE',
+                success: function (data) {
+                    console.log("success: "+data);
+                },
+                error: function (data) {
+                    console.log("error: "+ data);
+                }
+            })
     }
 </script>
 </h:body>

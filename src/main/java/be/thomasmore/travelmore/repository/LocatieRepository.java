@@ -27,6 +27,12 @@ public class LocatieRepository {
 
     public void delete(int id)
     {
-        entityManager.remove( entityManager.find(Locatie.class, id) );
+
+        Locatie locatie = entityManager.find(Locatie.class, id);
+
+        if(locatie != null)
+            entityManager.remove( locatie );
+        else
+            System.out.println("Ongeldige locatie: " + id);
     }
 }
