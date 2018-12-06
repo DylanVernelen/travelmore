@@ -5,7 +5,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://xmlns.jcp.org/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://java.sun.com/jsp/jstl/core">
 <h:head>
     <title>Home</title>
     <!--Import Google Icon Font-->
@@ -31,7 +32,14 @@
                 </ul>
                 <ul class="right" id="loginButton">
                     <li>
-                        <a class="waves-effect waves-light btn modal-trigger" href="#loginModal">Login</a>
+                        <c:if test="#{!gebruikerController.ingelogd}">
+                            <a class="waves-effect waves-light btn modal-trigger" href="#loginModal">#{gebruikerController.login}</a>
+                        </c:if>
+                        <c:if test="#{gebruikerController.ingelogd}">
+                            <h:form>
+                                <h:commandButton class="waves-effect waves-light btn" action="#{gebruikerController.logout()}" value="#{gebruikerController.login}"></h:commandButton>
+                            </h:form>
+                        </c:if>
                     </li>
                 </ul>
             </div>
@@ -64,32 +72,24 @@
     </ui:insert>
     <div id="loginModal" class="modal">
         <div class="modal-content">
-            <h4>Modal Header</h4>
-            <p>A bunch of text</p>
+            <h4>Wie ben jij?</h4>
             <h:outputLink styleClass="btn blue lighten-1" value="registreren.xhtml">Registreer</h:outputLink>
-           <!-- <h:form>
-                <h3>JSF Login Logout</h3>
+            <p>OF</p>
+            <h3>Login:</h3>
+            <h:form>
                 <h:outputText value="Email" />
-                <h:inputText id="email" value="#{gebruikerController.email}"></h:inputText>
+                <h:inputText id="email" value="#{gebruikerController.mail}"></h:inputText>
                 <h:message for="email"></h:message>
                 <br></br><br></br>
 
                 <h:outputText value="Wachtwoord" />
-                <h:inputSecret id="wachtwoord" value="#{gebruikerController.wachtwoord}"></h:inputSecret>
+                <h:inputSecret id="wachtwoord" value="#{gebruikerController.password}"></h:inputSecret>
                 <h:message for="wachtwoord"></h:message>
                 <br></br><br></br>
 
-                <h:commandButton action="#{gebruikerController.valideer()}"
-                                 value="Login"></h:commandButton>
-
-            </h:form>-->
-
-
-                <h:outputText value="#{gebruikerController.ingelogdeGebruiker.toString()}" />
-
-        </div>
-        <div class="modal-footer">
-            <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+                <h:commandButton action="#{gebruikerController.valideer()}" value="Login"></h:commandButton>
+            </h:form>
+            <h:outputText value="#{gebruikerController.ingelogdeGebruiker.toString()}" />
         </div>
     </div>
     <footer class="page-footer blue lighten-1">
