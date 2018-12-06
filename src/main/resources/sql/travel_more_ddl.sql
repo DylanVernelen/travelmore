@@ -145,7 +145,7 @@ INSERT INTO `rol` (`id`, `naam`) VALUES
 
 
 INSERT INTO `gebruiker` (`id`, `rolId`, `naam`, `adres`, `woonplaats`, `email`, `wachtwoord`) VALUES
-	(1, 1, 'Dylan', 'thuis', 'Geel', 'temp@gmail.com', 'test');
+	(1, 1, 'Dylan', 'thuis', 'Geel', 'dylanver@live.be', 'test');
 
 INSERT INTO `reis` (`id`, `naam`, `afbeelding`, `vertrek_id`, `bestemming_id`, `aantalPlaatsen`, `kostprijs`, `startdatum`, `einddatum`, `transportmiddel_id`) VALUES
 	(2, 'Reis naar Parijs', 'parijs.jpg', 2, 2, 10, 249, '2018-01-01 00:00:00', '2018-01-07 00:00:00', 1),
