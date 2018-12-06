@@ -51,9 +51,9 @@ public class LocatieRestService {
 
     @DELETE
     @Path("/deletelocatie")
+    @Produces({ MediaType.APPLICATION_JSON })
     public void removeLocatieById(@QueryParam("id") int id)
     {
         locatieService.delete(id);
-
     }
 }
