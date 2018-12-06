@@ -12,9 +12,6 @@ public class Betaling {
     private int id;
 
     @OneToOne
-    private Boeking boeking;
-
-    @OneToOne
     private BetalingsType betalingsType;
     private Date datum;
 
@@ -24,14 +21,6 @@ public class Betaling {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public Boeking getBoeking() {
-        return boeking;
-    }
-
-    public void setBoeking(Boeking boeking) {
-        this.boeking = boeking;
     }
 
     public BetalingsType getBetalingstype() {

@@ -1,9 +1,7 @@
 package be.thomasmore.travelmore.controller;
 
-import be.thomasmore.travelmore.domain.Betaling;
-import be.thomasmore.travelmore.domain.BetalingsType;
-import be.thomasmore.travelmore.domain.Boeking;
-import be.thomasmore.travelmore.domain.Reis;
+import be.thomasmore.travelmore.domain.*;
+import be.thomasmore.travelmore.service.BetalingService;
 import be.thomasmore.travelmore.service.BoekingService;
 
 import javax.faces.bean.ManagedBean;
@@ -20,10 +18,15 @@ public class BoekingController {
     @Inject
     private BoekingService boekingService;
 
+    @Inject
+    private BetalingService betalingService;
+
     public String boekReis(Reis reis){
         nieuweBoeking.setReis(reis);
         nieuweBoeking.setAantalPersonen(1);
-        //nieuweBoeking.setGebruiker(); //hier de aangemelde gebruiker koppelen aan de boeking
+        Gebruiker gebruiker = new Gebruiker();
+        gebruiker.setId(1);
+        nieuweBoeking.setGebruiker(gebruiker); //hier de aangemelde gebruiker koppelen aan de boeking
 
         return "boeking";
     }
@@ -34,6 +37,16 @@ public class BoekingController {
         betaling.setDatum(date);
         betaling.setBetalingstype(betalingsType);
         nieuweBoeking.setBetaling(betaling);
+        System.out.println("****************************************************");
+        System.out.println(nieuweBoeking.getAantalPersonen());
+        System.out.println(nieuweBoeking.getOpmerking());
+        System.out.println(nieuweBoeking.getReis().getNaam());
+        System.out.println(nieuweBoeking.getBetaling().getBetalingstype().getNaam());
+        System.out.println("****************************************************");
+        nieuweBoeking.setBetaling(betaling);
+        //boekingService.insert(nieuweBoeking);
+
+        //stuur email
         return "bedankt";
     }
 

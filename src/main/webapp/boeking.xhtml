@@ -75,12 +75,18 @@
                     </tbody>
                 </table>
                 <h:form>
-                    <h:outputLabel for="plaatsen" value="Aantal personen:"/>
-                    <p:spinner id="plaatsen" value="#{boekingController.nieuweBoeking.aantalPersonen}" min="1"
-                               style="padding-right:30px" max="#{boekingController.nieuweBoeking.reis.aantalPlaatsen}">
-                        <f:ajax event="change" render="totalePrijs" execute="@this"/>
-                    </p:spinner>
+                    <div class="row">
+                        <div class="col s3">
+                            <h:outputLabel for="plaatsen" value="Aantal personen:"/>
+                            <p:spinner id="plaatsen" value="#{boekingController.nieuweBoeking.aantalPersonen}" min="1"
+                                       style="padding-right:30px" max="#{boekingController.nieuweBoeking.reis.aantalPlaatsen}">
+                                <f:ajax event="change" render="totalePrijs" execute="@this"/>
+                            </p:spinner>
+                        </div>
+                    </div>
                     <p>Totale prijs: €<h:outputText id="totalePrijs" value="#{boekingController.nieuweBoeking.aantalPersonen * boekingController.nieuweBoeking.reis.kostprijs}"/></p>
+                    <h:outputLabel for="opmerking" value="Opmerking:"/>
+                    <h:inputTextarea id="opmerking" value="#{boekingController.nieuweBoeking.opmerking}" styleClass="materialize-textarea"/>
                     <h5>Betaal met: </h5>
                     <div class="row">
                         <ui:repeat value="#{betalingsTypeController.betalingsTypes}" var="betaling">

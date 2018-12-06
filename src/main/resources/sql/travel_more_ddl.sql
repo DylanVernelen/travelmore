@@ -90,7 +90,7 @@ CREATE TABLE boeking (
 CREATE TABLE betaling (
   id  int(11) NOT NULL AUTO_INCREMENT,
   datum DATETIME NOT NULL,
-  betalingstypeId int(11) NOT NULL,
+  betalingsType_id int(11) NOT NULL,
   PRIMARY KEY (id),
   UNIQUE KEY id_UNIQUE (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -116,11 +116,11 @@ CREATE TABLE betalingstype (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE betaling
-  ADD KEY betalingstypeId (betalingstypeId);
+  ADD KEY betalingsType_id (betalingsType_id);
 
 ALTER TABLE betaling
   ADD CONSTRAINT betaling_ibfk_2 FOREIGN KEY
-  (betalingstypeId) REFERENCES betalingstype (id);
+  (betalingsType_id) REFERENCES betalingstype (id);
 
 INSERT INTO `betalingstype` (`id`, `naam`) VALUES
 	(1, 'bancontact'),

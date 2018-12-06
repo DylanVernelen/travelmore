@@ -19,7 +19,7 @@ public class Boeking {
     private int aantalPersonen;
     @Column(name = "opmerking")
     private String opmerking;
-    @OneToOne
+    @OneToOne(cascade = {CascadeType.ALL})
     private Betaling betaling;
 
     public int getId() {
