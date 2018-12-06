@@ -17,7 +17,7 @@ public class BetalingsTypeController {
     @Inject
     private BetalingsTypeService betalingTypeService;
 
-    public List<BetalingsType> getLocations(){
+    public List<BetalingsType> getBetalingsTypes(){
         return this.betalingTypeService.findAll();
     }
 

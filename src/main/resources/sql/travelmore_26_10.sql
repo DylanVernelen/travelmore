@@ -35,6 +35,10 @@ CREATE TABLE IF NOT EXISTS `betalingstype` (
   UNIQUE KEY `id_UNIQUE` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `betalingstype` (`id`, `naam`) VALUES
+	(1, 'bancontact'),
+	(2, 'paypal'),
+	(3, 'visa');
 
 -- Structuur van  tabel travelmore.boeking wordt geschreven
 CREATE TABLE IF NOT EXISTS `boeking` (
