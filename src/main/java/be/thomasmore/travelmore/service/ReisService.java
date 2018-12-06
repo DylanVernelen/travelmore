@@ -22,5 +22,5 @@ public class ReisService {
         return  reisRepository.filter(filterReis);
     }
 
-    public void delete(int id) { reisRepository.delete(id);}
+    public void delete(Reis reis) { reisRepository.delete(reis);}
 }
