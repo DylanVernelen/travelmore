@@ -9,62 +9,53 @@
 
 <ui:composition template="/templates/template.xhtml">
 <ui:define name="content">
-<header>
-    <div class="container">
-        <div class="row">
-            <div class="col s12">
-                <h1 class="header">
-                    <span class="blue-text">TRA</span><span class="orange-text">VEL</span><span class="red-text">MORE</span>
-                </h1>
-                <div class="divider"></div>
-            </div>
-        </div>
-    </div>
-</header>
+
 <main>
 <f:view>
     <h:form class="form offset-s2 col s8">
         <h2><h:outputText value="Registreer"/></h2>
-            <div class="offset-s2 col s10">
+            <div class="offset-s2 col s6">
             <label>Naam:</label>
            <div class="input-field">
-                <h:inputText  id="Naam"   value="#{gebruikerController.nieuweGebruiker.naam}">
+                <h:inputText  id="Naam" value="#{gebruikerController.nieuweGebruiker.naam}">
                 </h:inputText>
             </div>
             </div>
+                   <div class="  offset-s2 col s6 ">
+                        <label>Adress:</label>
+                    <div class="input-field">
+                    <h:inputText   value="#{gebruikerController.nieuweGebruiker.adres}">
+                    </h:inputText>
+                    </div>
+                    </div>
+                     <div class=" offset-s2 col s6 ">
+                        <label>Woonplaats:</label>
+                    <div class="input-field ">
+                    <h:inputText   value="#{gebruikerController.nieuweGebruiker.woonplaats}">
+                    </h:inputText>
+                    </div>
+                    </div>
+                     <div class="offset-s2 col s6 ">
+                         <label>Email:</label>
+                     <div class="input-field ">
+                     <h:inputText value="#{gebruikerController.nieuweGebruiker.email}">
+                     </h:inputText>
+                     </div>
+                     </div>
+                   <div class="offset-s2 col s6">
+                         <label>Wachtwoord:</label>
+                     <div class="input-field  ">
+                         <h:inputSecret required="true" validatorMessage="Passwoord moet minstens 6 karakters lang zijn." id="Password" value="#{gebruikerController.nieuweGebruiker.wachtwoord}" >
+                             <f:validateLength minimum="6"  />
+                         </h:inputSecret>
+                         <h:message for="Password" style="color:red" />
+                     </div>
+                     </div>
 
-           <div class="  offset-s2 col s10row">
-                <label>Adress:</label>
-            <div class="input-field">
-            <h:inputText   value="#{gebruikerController.nieuweGebruiker.adres}">
-            </h:inputText>
-            </div>
-            </div>
-             <div class=" offset-s2 col s10row">
-                <label>Woonplaats:</label>
-            <div class="input-field ">
-            <h:inputText   value="#{gebruikerController.nieuweGebruiker.woonplaats}">
-            </h:inputText>
-            </div>
-            </div>
-             <div class="offset-s2 col s10 ">
-                 <label>Email:</label>
-             <div class="input-field ">
-             <h:inputText   value="#{gebruikerController.nieuweGebruiker.email}">
-             </h:inputText>
-             </div>
-             </div>
-           <div class="offset-s2 col s10">
-                 <label>Wachtwoord:</label>
-             <div class="input-field ">
-             <h:inputText   value="#{gebruikerController.nieuweGebruiker.wachtwoord}">
-             </h:inputText>
-             </div>
-             </div>
-            <div class="row">
+                    <div class="row">
             <h:commandLink class="waves-effect waves-light btn"  value="registreer" action="#{gebruikerController.registreer()}">
             </h:commandLink>
-            </div>
+                    </div>
 
     </h:form>
 

@@ -12,6 +12,7 @@ public class GebruikerRepository {
 
     public void insert(Gebruiker gebruiker) {
         entityManager.persist(gebruiker);
+
     }
 
     public Gebruiker gebruikerLogin(String email, String wachtwoord){
