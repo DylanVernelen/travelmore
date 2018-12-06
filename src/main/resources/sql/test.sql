@@ -145,4 +145,13 @@ INSERT INTO `reis` (`id`, `naam`, `afbeelding`, `vertrek_id`, `bestemming_id`, `
 	(5, 'Fietstocht naar Brugge', NULL , 6, 5, 36, 254, '2018-11-05 00:00:00', '2018-11-06 00:00:00', 4);
 
 
+INSERT INTO `rol` (`id`, `naam`) VALUES
+	(1, 'Gebruiker'),
+	(2, 'Admin'),
+	(3, 'Bezoeker');
+
+INSERT INTO `gebruiker` (`id`, `rolId`, `naam`, `adres`, `woonplaats`, `email`, `wachtwoord`) VALUES
+	(1, 1, 'Dylan', 'thuis', 'Geel', 'temp@gmail.com', 'test');
+
+
 
