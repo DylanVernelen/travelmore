@@ -122,6 +122,11 @@ ALTER TABLE betaling
   ADD CONSTRAINT betaling_ibfk_2 FOREIGN KEY
   (betalingstypeId) REFERENCES betalingstype (id);
 
+INSERT INTO `betalingstype` (`id`, `naam`) VALUES
+	(1, 'bancontact'),
+	(2, 'paypal'),
+	(3, 'visa');
+
 INSERT INTO `locatie` (`id`, `naam`) VALUES
 	(1, 'Geel'),
 	(2, 'Parijs'),

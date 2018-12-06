@@ -35,4 +35,8 @@ select {
     display: inline-block;
 }
 
+.rounded{
+    border-radius: 30px;
+    padding: 0!important;
+}
 

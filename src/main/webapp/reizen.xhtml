@@ -103,7 +103,9 @@
                                     </table>
                                 </div>
                                 <div class="card-action">
-                                        <a href="#">Reis boeken</a>
+                                    <h:form>
+                                        <h:commandLink action="#{boekingController.boekReis(reis)}" value="Reis boeken" />
+                                    </h:form>
                                 </div>
                             </div>
                         </div>
