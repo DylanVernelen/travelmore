@@ -11,7 +11,88 @@
     <ui:define name="content">
         <main>
             <div class="container">
-                <h2>Bedankt</h2>
+                <h2>Bedankt <h:outputText value="#{boekingController.nieuweBoeking.gebruiker.naam}"/>!</h2>
+                <p>Bedankt dat u voor ons gekozen hebt. Hier ziet u nog een overzicht van uw boeking:</p>
+                <div class="row">
+                    <p:graphicImage value="resources/img/#{boekingController.nieuweBoeking.reis.afbeelding}" styleClass="col s8 rounded"/>
+                </div>
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>Naam:</th>
+                        <td><h:outputText value="#{boekingController.nieuweBoeking.reis.naam}"/></td>
+                    </tr>
+                    <tr>
+                        <th>Plaatsen:</th>
+                        <td>x/<h:outputText value="#{boekingController.nieuweBoeking.reis.aantalPlaatsen}"/> beschikbaar</td>
+                    </tr>
+                    <tr>
+                        <th>Start:</th>
+                        <td><h:outputText value="#{boekingController.nieuweBoeking.reis.startdatumPretty}"/></td>
+                    </tr>
+                    <tr>
+                        <th>Eind:</th>
+                        <td><h:outputText value="#{boekingController.nieuweBoeking.reis.einddatumPretty}"/></td>
+                    </tr>
+                    <tr>
+                        <th>Vertrek:</th>
+                        <td><h:outputText value="#{boekingController.nieuweBoeking.reis.vertrek.naam}"/></td>
+                    </tr>
+                    <tr>
+                        <th>Aankomst:</th>
+                        <td><h:outputText value="#{boekingController.nieuweBoeking.reis.bestemming.naam}"/></td>
+                    </tr>
+                    <tr>
+                        <th>Transportmiddel:</th>
+                        <td><h:outputText value="#{boekingController.nieuweBoeking.reis.transportmiddel.naam}"/></td>
+                    </tr>
+                    <tr>
+                        <th>Prijs:</th>
+                        <td>€<h:outputText value="#{boekingController.nieuweBoeking.reis.kostprijs}"/>(/persoon)</td>
+                    </tr>
+                    <tr>
+                        <th>Aantal personen:</th>
+                        <td><h:outputText value="#{boekingController.nieuweBoeking.aantalPersonen}"/></td>
+                    </tr>
+                    <tr>
+                        <th>Totale prijs:</th>
+                        <td>€<h:outputText value="#{boekingController.nieuweBoeking.aantalPersonen * boekingController.nieuweBoeking.reis.kostprijs}"/></td>
+                    </tr>
+                    <tr>
+                        <th>Betalingsmethode:</th>
+                        <td>
+                            <p:graphicImage value="resources/img/#{boekingController.nieuweBoeking.betaling.betalingstype.naam}.png" styleClass="responsive-img" style="max-height: 100px;"/>
+                        </td>
+                    </tr>
+                    <tr>
+                        <th>Uw opmerking:</th>
+                        <td><h:outputText value="#{boekingController.nieuweBoeking.opmerking}"/></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <h5>Uw gegevens:</h5>
+
+                <table>
+                    <tbody>
+                    <tr>
+                        <th>Naam:</th>
+                        <td><h:outputText value="#{boekingController.nieuweBoeking.gebruiker.naam}"/></td>
+                    </tr>
+                    <tr>
+                        <th>Adres:</th>
+                        <td><h:outputText value="#{boekingController.nieuweBoeking.gebruiker.adres}"/></td>
+                    </tr>
+                    <tr>
+                        <th>Woonplaats:</th>
+                        <td><h:outputText value="#{boekingController.nieuweBoeking.gebruiker.woonplaats}"/></td>
+                    </tr>
+                    <tr>
+                        <th>Email:</th>
+                        <td><h:outputText value="#{boekingController.nieuweBoeking.gebruiker.email}"/></td>
+                    </tr>
+                    </tbody>
+                </table>
+                <p>Een goed reis en tot de volgende keer!</p>
             </div>
         </main>
     </ui:define>

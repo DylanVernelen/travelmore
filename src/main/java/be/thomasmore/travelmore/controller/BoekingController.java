@@ -6,8 +6,10 @@ import be.thomasmore.travelmore.service.BoekingService;
 
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.SessionScoped;
+import javax.faces.context.FacesContext;
 import javax.faces.event.AjaxBehaviorEvent;
 import javax.inject.Inject;
+import javax.servlet.http.HttpSession;
 import java.util.Date;
 
 @ManagedBean
@@ -21,27 +23,38 @@ public class BoekingController {
     @Inject
     private BetalingService betalingService;
 
+    @Inject
+    private GebruikerController gebruikerController;
+
     public String boekReis(Reis reis){
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+                .getExternalContext().getSession(false);
+        Gebruiker ingelogd = (Gebruiker)session.getAttribute("user");
+        if(ingelogd == null){
+            return "reizenfilter";
+        }
         nieuweBoeking.setReis(reis);
         nieuweBoeking.setAantalPersonen(1);
-        Gebruiker gebruiker = new Gebruiker();
-        gebruiker.setId(1);
-        nieuweBoeking.setGebruiker(gebruiker); //hier de aangemelde gebruiker koppelen aan de boeking
+        nieuweBoeking.setGebruiker(ingelogd);
 
         return "boeking";
     }
 
     public String betaalReis(BetalingsType betalingsType){
+        HttpSession session = (HttpSession) FacesContext.getCurrentInstance()
+                .getExternalContext().getSession(false);
+        Gebruiker ingelogd = (Gebruiker)session.getAttribute("user");
+        if(ingelogd == null){
+            return "reizenfilter";
+        }
         Betaling betaling = new Betaling();
         Date date = new Date();
         betaling.setDatum(date);
         betaling.setBetalingstype(betalingsType);
-        nieuweBoeking.setBetaling(betaling);
         System.out.println("****************************************************");
         System.out.println(nieuweBoeking.getAantalPersonen());
         System.out.println(nieuweBoeking.getOpmerking());
         System.out.println(nieuweBoeking.getReis().getNaam());
-        System.out.println(nieuweBoeking.getBetaling().getBetalingstype().getNaam());
         System.out.println("****************************************************");
         //nieuweBoeking.setBetaling(betaling);
         betalingService.insert(betaling);
@@ -53,14 +66,8 @@ public class BoekingController {
     }
 
     public void insertBoeking(Boeking boeking){
-        Betaling betaling1 = new Betaling();
-        betaling1.setId(1);
-        BetalingsType betalingsType1 = new BetalingsType();
-        betalingsType1.setId(2);
-        betaling1.setBetalingstype(betalingsType1);
-        Date date = new Date();
-        betaling1.setDatum(date);
-        //boeking.setBetaling(betaling1);
+        Betaling betaling = betalingService.getLaatsteBetaling();
+        boeking.setBetaling(betaling);
         boekingService.insert(boeking);
     }
 
