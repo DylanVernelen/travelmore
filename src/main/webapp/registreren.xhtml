@@ -17,7 +17,7 @@
             <div class="offset-s2 col s6">
             <label>Naam:</label>
            <div class="input-field">
-                <h:inputText  requiredMessage="Je moet een naam invullen"   id="Naam" value="#{gebruikerController.nieuweGebruiker.naam}">
+                <h:inputText  requiredMessage="Je moet een naam invullen" required="true"  id="Naam" value="#{gebruikerController.nieuweGebruiker.naam}">
                 </h:inputText>
                <h:message for="Naam" style="color:red" />
             </div>
@@ -25,7 +25,7 @@
                    <div class="  offset-s2 col s6 pull-s4 ">
                         <label>Adress:</label>
                     <div class="input-field">
-                    <h:inputText id="Adres"  requiredMessage="Je moet een adres invullen"   value="#{gebruikerController.nieuweGebruiker.adres}">
+                    <h:inputText id="Adres" required="true" requiredMessage="Je moet een adres invullen"   value="#{gebruikerController.nieuweGebruiker.adres}">
                     </h:inputText>
                         <h:message for="Adres" style="color:red" />
                     </div>
@@ -33,7 +33,7 @@
                      <div class=" offset-s2 col s6 pull-s4 ">
                         <label>Woonplaats:</label>
                     <div class="input-field ">
-                    <h:inputText id="Woonplaats" requiredMessage="Je moet een woonplaats invullen"    value="#{gebruikerController.nieuweGebruiker.woonplaats}">
+                    <h:inputText id="Woonplaats" required="true" requiredMessage="Je moet een woonplaats invullen"    value="#{gebruikerController.nieuweGebruiker.woonplaats}">
                     </h:inputText>
                         <h:message for="Woonplaats" style="color:red" />
                     </div>
@@ -44,7 +44,7 @@
                      <h:inputText required="true" id="Email" requiredMessage="Je moet een email adres ingeven"
                                   validatorMessage="Dit is geen email address" value="#{gebruikerController.nieuweGebruiker.email}">
 
-                         <f:validateRegex pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+\\\\.[a-zA-Z0-9]+" />
+                         <f:validateRegex pattern="[a-zA-Z0-9]+@[a-zA-Z0-9]+.[a-zA-Z0-9]+" />
                      </h:inputText>
                          <h:message for="Email" style="color:red" />
                      </div>
@@ -58,14 +58,11 @@
                          <h:message for="Password" style="color:red" />
                      </div>
                      </div>
-
                     <div class="row">
             <h:commandLink class="waves-effect waves-light btn"  value="registreer" action="#{gebruikerController.registreer()}">
             </h:commandLink>
                     </div>
-
     </h:form>
-
 </f:view>
 </main>
 </ui:define>
