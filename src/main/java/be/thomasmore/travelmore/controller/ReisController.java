@@ -66,6 +66,10 @@ public class ReisController {
         this.reisService.insert(nieuweReis);
     }
 
+    public void deleteReis(int id){
+        this.reisService.delete(id);
+    }
+
     public List<Reis> getGefilterdeReizen() {
         return gefilterdeReizen;
     }
