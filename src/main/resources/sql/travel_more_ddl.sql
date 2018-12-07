@@ -10,7 +10,7 @@ USE travelmore;
 
 CREATE TABLE gebruiker (
   id int(11) NOT NULL AUTO_INCREMENT,
-  rolId int(11) NOT NULL,
+  rol_id int(11) NOT NULL,
   naam varchar(255) NOT NULL,
   adres varchar(255) NOT NULL,
   woonplaats varchar(255) NOT NULL,
@@ -28,11 +28,11 @@ CREATE TABLE rol (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE gebruiker
-  ADD KEY rolId (rolId);
+  ADD KEY rol_id (rol_id);
 
 ALTER TABLE gebruiker
   ADD CONSTRAINT gebruiker_ibfk_1 FOREIGN KEY
-  (rolId) REFERENCES rol (id);
+  (rol_id) REFERENCES rol (id);
 
 CREATE TABLE reis (
   id  int(11) NOT NULL AUTO_INCREMENT,
@@ -78,11 +78,11 @@ ALTER TABLE reis
 
 CREATE TABLE boeking (
   id  int(11) NOT NULL AUTO_INCREMENT,
-  gebruikerId int(11) NOT NULL,
-  reisId int(11) NOT NULL,
+  gebruiker_id int(11) NOT NULL,
+  reis_id int(11) NOT NULL,
   aantalPersonen int(11) NOT NULL,
   opmerking varchar(255) DEFAULT NULL,
-  betalingId int(11) DEFAULT NULL,
+  betaling_id int(11) DEFAULT NULL,
   PRIMARY KEY (id),
   UNIQUE KEY id_UNIQUE (id)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -96,17 +96,17 @@ CREATE TABLE betaling (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 ALTER TABLE boeking
-  ADD KEY gebruikerId (gebruikerId),
-  ADD KEY reisId (reisId),
-  ADD KEY betalingId (betalingId);
+  ADD KEY gebruiker_id (gebruiker_id),
+  ADD KEY reis_id (reis_id),
+  ADD KEY betaling_id (betaling_id);
 
 ALTER TABLE boeking
   ADD CONSTRAINT boeking_ibfk_1 FOREIGN KEY
-  (gebruikerId) REFERENCES gebruiker (id),
+  (gebruiker_id) REFERENCES gebruiker (id),
   ADD CONSTRAINT boeking_ibfk_2 FOREIGN KEY
-  (reisId) REFERENCES reis (id),
+  (reis_id) REFERENCES reis (id),
   ADD CONSTRAINT boeking_ibfk_3 FOREIGN KEY
-  (betalingId) REFERENCES  betaling (id);
+  (betaling_id) REFERENCES  betaling (id);
 
 CREATE TABLE betalingstype (
   id  int(11) NOT NULL AUTO_INCREMENT,
@@ -144,13 +144,13 @@ INSERT INTO `rol` (`id`, `naam`) VALUES
 	(3, 'Bezoeker');
 
 
-INSERT INTO `gebruiker` (`id`, `rolId`, `naam`, `adres`, `woonplaats`, `email`, `wachtwoord`) VALUES
-	(1, 1, 'Dylan', 'Kleinhoefstraat', 'Geel', 'dylanver@live.be', 'test');
-	(7, 1, 'User', 'Kleinhoefstraat', 'Geel', 'user@travelmore.be', 'ThomasMore1');
-  (2, 1, 'Sander', 'Pauwbroekstraat 45', 'Ham', 'sander.philipsen@hotmail.com', 'ThomasMore1');
-  (5, 1, 'Tom', 'Dorpstraat 10', 'Ham', 'tom@gmail.com', 'test') ;
-  (6, 1, 'Sander', 'Pauwbroekstraat 45', 'Ham', 'sander.philipsen@hotmail.com', 'test');
-  (3, 2, 'admin', 'Dorpstraat 45', 'Geel', 'admin@travelmore.be', 'ThomasMore1');
+INSERT INTO `gebruiker` (`id`, `rol_id`, `naam`, `adres`, `woonplaats`, `email`, `wachtwoord`) VALUES
+	(1, 1, 'Dylan', 'Kleinhoefstraat', 'Geel', 'dylanver@live.be', 'test'),
+	(7, 1, 'User', 'Kleinhoefstraat', 'Geel', 'user@travelmore.be', 'ThomasMore1'),
+  (2, 1, 'Sander', 'Pauwbroekstraat 45', 'Ham', 'sander.philipsen@hotmail.com', 'ThomasMore1'),
+  (5, 1, 'Tom', 'Dorpstraat 10', 'Ham', 'tom@gmail.com', 'test') ,
+  (6, 1, 'Sander', 'Pauwbroekstraat 45', 'Ham', 'sander.philipsen@hotmail.com', 'test'),
+  (3, 2, 'admin', 'Dorpstraat 45', 'Geel', 'admin@travelmore.be', 'ThomasMore1'),
   (4, 2, 'admin2', 'Kleinhoefstraat 4', 'Geel', 'admin2@travelmore.be', 'ThomasMore1');
 
 INSERT INTO `reis` (`id`, `naam`, `afbeelding`, `vertrek_id`, `bestemming_id`, `aantalPlaatsen`, `kostprijs`, `startdatum`, `einddatum`, `transportmiddel_id`) VALUES

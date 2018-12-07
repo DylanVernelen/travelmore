@@ -17,7 +17,8 @@ public class Gebruiker {
 
     @Id
     private int id;
-    @Column(name = "rolId")
+
+    @Column(name = "rol_id")
     private int rolId;
     @Column(name = "naam")
     private String naam;
